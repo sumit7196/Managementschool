@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.school.tyari.others.SchoolDetailsActivity">
+
+    <TextView
+        android:id="@+id/sttv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SchoolTyari"
+        android:gravity="center_horizontal"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        />
+
+    <View
+        android:id="@+id/vv"
+        android:layout_below="@id/sttv"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/rivscl"
+        android:layout_below="@id/vv"
+        android:src="@drawable/sc1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:riv_corner_radius="10dp"
+        android:padding="5dp"
+        android:layout_marginTop="20dp"
+        />
+
+
+    <WebView
+        android:id="@+id/schoolabout"
+        android:layout_below="@id/rivscl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        />
+
+
+
+</RelativeLayout>
