@@ -54,6 +54,9 @@ public class AdapterOrderUser extends  RecyclerView.Adapter<AdapterOrderUser.Hol
         final String orderTo = modelOrderUser.getOrderTo();
 
         //get shop info
+
+
+
         loadShopInfo(modelOrderUser,holder);
         //set data
         holder.amountTv.setText("Amount: $" +orderCost);
@@ -89,6 +92,11 @@ public class AdapterOrderUser extends  RecyclerView.Adapter<AdapterOrderUser.Hol
         });
 
     }
+
+
+
+
+
 
     private void loadShopInfo(ModelOrderUser modelOrderUser, final HolderOrderUser holder) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");

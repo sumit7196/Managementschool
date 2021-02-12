@@ -206,8 +206,6 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
 
     }
 
-
-
     private void loadOrderedItems() {
         //init list
         ordereditemArrayList = new ArrayList<>();
@@ -292,7 +290,7 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
 
                         //convert timestamp to proper format
                         Calendar calendar = Calendar.getInstance();
-                        calendar.setTimeInMillis(Long.parseLong(orderTime));
+//                        calendar.setTimeInMillis(Long.parseLong(orderTime));
                         String formatedDate = DateFormat.format("dd/MM/yyyy hh:mm a",calendar).toString(); //e.g 29/05/2020 12:25 PM
 
                         if (orderStatus.equals("In Progress")){
@@ -311,7 +309,7 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
                         amountTv.setText("$"+orderCost+"[Including delivery fee $"+deliveryFee+"]");
                         dateTv.setText(formatedDate);
 
-                        findAddress(latitude,longitude);
+                      //  findAddress(latitude,longitude);
 
 
                     }
@@ -362,7 +360,7 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
                         amountTv.setText("$"+orderCost+"[Including delivery fee $"+deliveryFee+"]");
                         dateTv.setText(formatedDate);
 
-                        findAddress(latitude,longitude);
+                      //  findAddress(latitude,longitude);
 
 
                     }
@@ -412,7 +410,7 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
     }
 
 
-    private void findAddress(String latitude, String longitude) {
+   /* private void findAddress(String latitude, String longitude) {
         double lat = Double.parseDouble(latitude);
         double lon = Double.parseDouble(longitude);
 
@@ -431,6 +429,8 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
 
         }
 
-    }
+    */
+
+
 
 }

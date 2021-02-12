@@ -87,9 +87,15 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         loadMyInfo();
-        loadBuyerInfo();
-        loadOrderDetails();
-        loadOrderedItems();
+
+        checkingUserinfo();
+        checkingOrderDetails();
+        checkingOrderItems();
+
+
+        //  loadBuyerInfo();
+      //  loadOrderDetails();
+//        loadOrderedItems();
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +121,136 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
 
 
     }
+
+
+    private void checkingUserinfo() {
+
+        //if user is seller ,start seller main screen
+        //if user is buyer,start user main screen
+
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+        ref
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            String account = "" + ds.child("account").getValue();
+                            if (account.equals("schoolcshp")) {
+
+                                //user Other
+                                loadBuyerInfo();
+
+                            }else if (account.equals("schoolsvm")) {
+
+                                //user Other
+                                loadBuyerInfosecond();
+
+                            }
+
+
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                        Toast.makeText(OrderDetailsSellerActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+    }
+
+    private void checkingOrderDetails() {
+
+        //if user is seller ,start seller main screen
+        //if user is buyer,start user main screen
+
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+        ref
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            String account = "" + ds.child("account").getValue();
+                            if (account.equals("schoolcshp")) {
+
+                                //user Other
+                                loadOrderDetails();
+
+                            }else if (account.equals("schoolsvm")) {
+
+                                //user Other
+                                loadOrderDetailssecond();
+
+                            }
+
+
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                        Toast.makeText(OrderDetailsSellerActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+    }
+
+    private void checkingOrderItems() {
+
+        //if user is seller ,start seller main screen
+        //if user is buyer,start user main screen
+
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+        ref
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            String account = "" + ds.child("account").getValue();
+                            if (account.equals("schoolcshp")) {
+
+                                //user Other
+                                loadOrderedItems();
+
+                            }else if (account.equals("schoolsvm")) {
+
+                                //user Other
+                                loadOrderedItemssecond();
+
+                            }
+
+
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                        Toast.makeText(OrderDetailsSellerActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+    }
+
+
+
+
+
+
 
     private void editOrderStatusDialog() {
         //option to display dialog
@@ -160,13 +296,6 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
                 });
     }
 
-    private void openMap() {
-        //saddr means source address
-        //daddr means destination address
-        String address = "https://maps.google.com/maps?saddr=" + sourceLatitude +","+ sourceLongitude+"&daddr=" + destinationLatitude + "," + destinationLongitude;
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(address));
-        startActivity(intent);
-    }
 
     private void loadMyInfo() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
@@ -186,7 +315,7 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
     }
 
     private void loadBuyerInfo() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         ref.child(orderBy)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -208,9 +337,33 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
                 });
     }
 
+    private void loadBuyerInfosecond() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
+        ref.child(orderBy)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        destinationLatitude = ""+snapshot.child("latitude").getValue();
+                        destinationLongitude = ""+snapshot.child("longitude").getValue();
+                        String email = ""+snapshot.child("email").getValue();
+                        String phone = ""+snapshot.child("phone").getValue();
+
+                        //set info
+                        emailTv.setText(email);
+                        phoneTv.setText(phone);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+
     private void loadOrderDetails() {
         //load detailed info of this order , based on order id
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         ref.child(firebaseAuth.getUid()).child("Orders").child(orderId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -259,25 +412,58 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
                 });
     }
 
-    private void findAddress(String latitude, String longitude) {
-        double lat = Double.parseDouble(latitude);
-        double lon = Double.parseDouble(longitude);
+    private void loadOrderDetailssecond() {
+        //load detailed info of this order , based on order id
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
+        ref.child(firebaseAuth.getUid()).child("Orders").child(orderId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //get order info
+                        String orderBy = ""+snapshot.child("orderBy").getValue();
+                        String orderCost = ""+snapshot.child("orderCost").getValue();
+                        String orderId = ""+snapshot.child("orderId").getValue();
+                        String orderStatus = ""+snapshot.child("orderStatus").getValue();
+                        String orderTime = ""+snapshot.child("orderTime").getValue();
+                        String orderTo = ""+snapshot.child("orderTo").getValue();
+                        String deliveryFee = ""+snapshot.child("deliveryFee").getValue();
+                        String latitude = ""+snapshot.child("latitude").getValue();
+                        String longitude = ""+snapshot.child("longitude").getValue();
 
-        Geocoder geocoder;
-        List<Address> addresses;
-        geocoder = new Geocoder(this, Locale.getDefault());
+                        //convert time stamp
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTimeInMillis(Long.parseLong(orderTime));
+                        String dateFormated = DateFormat.format("dd/MM/yyyy",calendar).toString();
 
-        try {
-            addresses = geocoder.getFromLocation(lat,lon,1);
+                        //order status
+                        if (orderStatus.equals("In Progress")){
+                            orderStatusTv.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        }
+                        else if (orderStatus.equals("Completed")){
+                            orderStatusTv.setTextColor(getResources().getColor(R.color.colorGreen));
+                        }
+                        else if (orderStatus.equals("Cancelled")){
+                            orderStatusTv.setTextColor(getResources().getColor(R.color.colorRed));
+                        }
 
-            //complete address
-            String address = addresses.get(0).getAddressLine(0);
-            addressTv.setText(address);
-        }
-        catch (Exception e){
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+                        //set data
+                        orderIdTv.setText(orderId);
+                        orderStatusTv.setText(orderStatus);
+                        amountTv.setText("$"+orderCost + "[Including deliver fee $"+deliveryFee+"]");
+                        dateTv.setText(dateFormated);
+
+                        findAddress(latitude,longitude); //to find delivery address
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
+
+
 
     private void loadOrderedItems(){
         //load the products/items of order
@@ -285,7 +471,7 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
         //init list
         ordereditemArrayList = new ArrayList<>();
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         ref.child(firebaseAuth.getUid()).child("Orders").child(orderId).child("Items")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -311,6 +497,77 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private void loadOrderedItemssecond(){
+        //load the products/items of order
+
+        //init list
+        ordereditemArrayList = new ArrayList<>();
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
+        ref.child(firebaseAuth.getUid()).child("Orders").child(orderId).child("Items")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        ordereditemArrayList.clear(); //before adding data clear list
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            ModelOrdereditem modelOrdereditem = ds.getValue(ModelOrdereditem.class);
+                            //add to list
+                            ordereditemArrayList.add(modelOrdereditem);
+                        }
+                        //setup adapter
+                        adapterOrderedItem = new AdapterOrderedItem(OrderDetailsSellerActivity.this,ordereditemArrayList);
+                        //set adapter to our recyclerview
+                        itemsRv.setAdapter(adapterOrderedItem);
+
+                        //set total number of items/products in order
+                        totalItemsTv.setText(""+snapshot.getChildrenCount());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+
+
+
+
+
+
+
+
+
+    private void openMap() {
+        //saddr means source address
+        //daddr means destination address
+        String address = "https://maps.google.com/maps?saddr=" + sourceLatitude +","+ sourceLongitude+"&daddr=" + destinationLatitude + "," + destinationLongitude;
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(address));
+        startActivity(intent);
+    }
+
+    private void findAddress(String latitude, String longitude) {
+        double lat = Double.parseDouble(latitude);
+        double lon = Double.parseDouble(longitude);
+
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+            addresses = geocoder.getFromLocation(lat,lon,1);
+
+            //complete address
+            String address = addresses.get(0).getAddressLine(0);
+            addressTv.setText(address);
+        }
+        catch (Exception e){
+            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     //notification to orders status changed
 

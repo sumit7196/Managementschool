@@ -89,7 +89,7 @@ public class MainUserActivity extends AppCompatActivity {
 
 
     }
-
+    // Its Shop Ui
     private void showShopsUI() {
         //show shop ui,hide ordes ui
         shopsRl.setVisibility(View.VISIBLE);
@@ -114,19 +114,7 @@ public class MainUserActivity extends AppCompatActivity {
         tabOrdersTv.setBackgroundResource(R.drawable.shape_04);
     }
 
- /*   private void checkUser() {
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user == null) {
-            startActivity(new Intent(MainUserActivity.this, LoginActivity.class));
-            finish();
-        } else {
-
-            checkingUserinfo();
-          //  loadMyInfo();
-        }
-    }
-
-  */
+  // Its for checking User information
 
     private void checkingUserinfo() {
 
@@ -242,6 +230,8 @@ public class MainUserActivity extends AppCompatActivity {
                 });
     }
 
+   // Load User Order
+
     private void loadOrders() {
         //init views
         ordersList = new ArrayList<>();
@@ -335,6 +325,8 @@ public class MainUserActivity extends AppCompatActivity {
             }
         });
     }
+
+   //load user Shop
 
     private void loadShops() {
         //init  list
