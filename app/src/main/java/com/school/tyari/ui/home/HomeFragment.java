@@ -1,5 +1,6 @@
 package com.school.tyari.ui.home;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,11 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.school.tyari.R;
+import com.school.tyari.activities.MainActivity;
+import com.school.tyari.activities.MainUserActivity;
+import com.school.tyari.others.AdmissionActivity;
+import com.school.tyari.others.BlogActivity;
+import com.school.tyari.others.ConveyanceActivity;
+import com.school.tyari.others.TutorActivity;
 import com.smarteist.autoimageslider.DefaultSliderView;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -20,12 +28,26 @@ import com.smarteist.autoimageslider.SliderLayout;
 
 public class HomeFragment extends Fragment {
     private SliderLayout sliderLayout;
-    private ImageView map;
+
+
+    private LinearLayout BookCv,AdmissionCv,tutorCv,conveyanceCv,rating;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+
+
+        BookCv = view.findViewById(R.id.BookCv);
+        AdmissionCv = view.findViewById(R.id.AdmissionCv);
+        conveyanceCv = view.findViewById(R.id.conveyanceCv);
+        tutorCv = view.findViewById(R.id.tutorCv);
+        rating = view.findViewById(R.id.rating);
+
+
+
 
         sliderLayout = view.findViewById(R.id.slider);
         sliderLayout.setIndicatorAnimation(IndicatorAnimations.FILL);
@@ -34,11 +56,55 @@ public class HomeFragment extends Fragment {
 
         setSliderViews();
 
-        map = view.findViewById(R.id.map);
-        map.setOnClickListener(new View.OnClickListener() {
+
+        BookCv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                openMap();
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),MainUserActivity.class );
+                startActivity(intent);
+            }
+        });
+
+        conveyanceCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),ConveyanceActivity.class );
+                startActivity(intent);
+            }
+        });
+        AdmissionCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),AdmissionActivity.class );
+                startActivity(intent);
+            }
+        });
+
+        tutorCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),TutorActivity.class );
+                startActivity(intent);
+            }
+        });
+
+
+
+        rating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            /*    try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.school.tyari")));
+                }
+                catch (ActivityNotFoundException e){
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
+                }
+
+             */
             }
         });
 
@@ -48,12 +114,6 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    private void openMap() {
-        Uri uri = Uri.parse("geo:0, 0?q=Government Polytechnic Aadmpur Trabganj Gonda");
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        intent.setPackage("com.google.android.apps.maps");
-        startActivity(intent);
-    }
 
     private void setSliderViews() {
         for (int i = 0; i< 5; i++){

@@ -7,6 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,6 +36,7 @@ import com.school.tyari.PrivacyPolicyActivity;
 import com.school.tyari.R;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import com.school.tyari.TermsActivity;
 import com.school.tyari.others.AdmissionActivity;
@@ -41,7 +46,7 @@ import com.school.tyari.others.ConveyanceActivity;
 import com.school.tyari.others.SchoolDetailsActivity;
 import com.school.tyari.others.TutorActivity;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     DrawerLayout drawerLayout;
@@ -51,28 +56,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
 
-    private LinearLayout BookCv,AdmissionCv,tutorCv,conveyanceCv,BlogCv,rating;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setCanceledOnTouchOutside(false);
 
-
-        //activity
-
-        BookCv = findViewById(R.id.BookCv);
-        AdmissionCv = findViewById(R.id.AdmissionCv);
-        conveyanceCv = findViewById(R.id.conveyanceCv);
-        tutorCv = findViewById(R.id.tutorCv);
-        BlogCv = findViewById(R.id.BlogCv);
-        rating = findViewById(R.id.rating);
-
-
-
+        firebaseAuth = FirebaseAuth.getInstance();
 
         //drawer layout
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -90,89 +84,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_home);
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Please wait");
-        progressDialog.setCanceledOnTouchOutside(false);
-
-        firebaseAuth = FirebaseAuth.getInstance();
-
-
-        //------------Click Listener-----------------//
-
-        BookCv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MainUserActivity.class));
-                finish();
-            }
-        });
-
-        conveyanceCv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ConveyanceActivity.class));
-                finish();
-            }
-        });
-        AdmissionCv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AdmissionActivity.class));
-                finish();
-            }
-        });
-
-        tutorCv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TutorActivity.class));
-                finish();
-            }
-        });
-        BlogCv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, BlogActivity.class));
-                finish();
-            }
-        });
-
-
-        rating.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.school.tyari")));
-                }
-                catch (ActivityNotFoundException e){
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
-                }
-            }
-        });
-
-
     }
 
+
+/*
     @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_logout:
+                checkingUser();
+                break;
+            case R.id.navigation_video:
+                Toast.makeText(this, "Video Lectures", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.navigation_rate:
+                Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
+                break;
 
-            super.onBackPressed();
-            Intent a = new Intent(Intent.ACTION_MAIN);
-            a.addCategory(Intent.CATEGORY_HOME);
-            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(a);
-
+            case R.id.navigation_theme:
+                Toast.makeText(this, "Theme", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.navigation_website:
+                Toast.makeText(this, "Website", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.navigation_share:
+                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                break;
         }
+        return true;
     }
+    
+ */
 
 
 
-    @Override
+
+
+
+
+
+
+
+   @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
@@ -184,16 +137,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent2);
                 break;
 
-
             case R.id.nav_contactus:
 
                 Uri uri = Uri.parse("tel:+918077198448");
                 Intent intent = new Intent(Intent.ACTION_DIAL,uri);
                 startActivity(intent);
-
                 break;
-
-
             case R.id.nav_share:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
@@ -205,39 +154,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 startActivity(Intent.createChooser(sharingIntent,"Share "));
                 break;
-
-
             case R.id.nav_rate:
                 rateMe();
                 break;
-
-
             case R.id.nav_update:
-
                 checkforupdate();
                 break;
-
             case R.id.nav_privacy:
-
                 startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
                 finish();
-
                 break;
 
             case R.id.nav_terms:
-
                 startActivity(new Intent(MainActivity.this, TermsActivity.class));
                 finish();
-
                 break;
-
-
             case R.id.nav_logout:
-
                 checkingUser();
-
-
-
                 break;
 
 
@@ -248,6 +181,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
 
     }
+
+    private void checkforupdate() {
+    }
+
 
     private void checkingUser() {
 
@@ -288,8 +225,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 });
 
     }
-
-
 
     private void logoutfirebasefirst() {
         //if user is seller ,start seller main screen
@@ -436,15 +371,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void checkforupdate() {
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.school.tyari")));
-        }
-        catch (ActivityNotFoundException e){
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
-        }
-    }
 
     private void rateMe() {
         try {
@@ -454,5 +380,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else
+            super.onBackPressed();
+    }
+
+    ///check its not know
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

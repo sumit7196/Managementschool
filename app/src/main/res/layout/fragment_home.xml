@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment">
 
     <ScrollView
@@ -17,106 +18,233 @@
             <com.smarteist.autoimageslider.SliderLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
+                android:layout_margin="5dp"
                 android:id="@+id/slider"/>
 
-            <TextView
-                android:id="@+id/txtscool"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="The School"
-                android:layout_marginTop="36dp"
-                android:textSize="@dimen/title_size"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/textColor"
-                android:fontFamily="@string/bold"/>
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/about_school"
-                android:layout_marginTop="@dimen/text_margin"
-                android:layout_marginHorizontal="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/textColor"
-                android:fontFamily="@string/light"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:background="@color/darkColor">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                >
+
+
+
 
                 <LinearLayout
+                    android:id="@+id/AdmissionCv"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="36dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_dashboardgrid_01"
 
-
-
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Departments"
-                        android:layout_marginTop="@dimen/text_margin"
-                        android:textSize="@dimen/title_size"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="#fff"
-                        android:fontFamily="@string/bold"/>
+                        >
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Admission"
+                            android:textSize="30sp"
+                            android:fontFamily="@font/muli_black"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30sp"
+                            android:textColor="@android:color/black"
+                            />
+
+
+                        <ImageView
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:padding="15dp"
+                            android:background="@drawable/shape_circle03"
+                            android:src="@drawable/school" />
+
+                    </RelativeLayout>
+
 
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/BookCv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_dashboardgrid_02">
+
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Books"
+                            android:textSize="30sp"
+                            android:fontFamily="@font/muli_black"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30sp"
+                            android:textColor="@android:color/black"
+                            />
+
+
+                        <ImageView
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/shape_circle03"
+                            android:padding="15dp"
+                            android:src="@drawable/book" />
+
+
+
+                    </RelativeLayout>
+
+
+
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tutorCv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_dashboardgrid_03"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tutor"
+                            android:textSize="30sp"
+                            android:fontFamily="@font/muli_black"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30sp"
+                            android:textColor="@android:color/black"
+                            />
+
+
+                        <ImageView
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/shape_circle03"
+                            android:padding="15dp"
+                            android:src="@drawable/teacher" />
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/conveyanceCv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_dashboardgrid_01"
+
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Conveyance"
+                            android:textSize="30sp"
+                            android:fontFamily="@font/muli_black"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30sp"
+                            android:textColor="@android:color/black"
+                            />
+
+
+                        <ImageView
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/shape_circle03"
+                            android:padding="15dp"
+                            android:src="@drawable/conveyance" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_dashboardgrid_03"
+
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rating"
+                            android:textSize="30sp"
+                            android:fontFamily="@font/muli_black"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="30sp"
+                            android:textColor="@android:color/black"
+                            />
+
+
+                        <ImageView
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/shape_circle03"
+                            android:padding="15dp"
+                            android:src="@drawable/rating" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/text_margin">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contact Details"
-                    android:layout_marginTop="36dp"
-                    android:textSize="@dimen/title_size"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="@color/textColor"
-                    android:fontFamily="@string/bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:layout_marginTop="@dimen/text_margin"
-                    android:layout_marginHorizontal="@dimen/text_margin"
-                    android:textSize="@dimen/text_size"
-                    android:textColor="@color/textColor"
-                    android:fontFamily="@string/light"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gonda, Uttar Pradesh"
-                    android:layout_marginTop="@dimen/text_margin"
-                    android:layout_marginHorizontal="@dimen/text_margin"
-                    android:textSize="@dimen/text_size"
-                    android:textColor="@color/textColor"
-                    android:fontFamily="@string/light"/>
-
-                <ImageView
-                    android:id="@+id/map"
-                    android:layout_width="wrap_content"
-                    android:layout_height="230dp"
-                    android:src="@drawable/logo"/>
-
-            </LinearLayout>
 
 
         </LinearLayout>

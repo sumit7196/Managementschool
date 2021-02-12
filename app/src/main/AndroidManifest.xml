@@ -30,7 +30,6 @@
         <activity android:name=".others.AdmissionActivity" />
         <activity android:name=".others.ConveyanceActivity" />
         <activity android:name=".others.SchoolDetailsActivity" />
-        <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.OrderDetailsSellerActivity" />
         <activity android:name=".activities.ShopReviewsActivity" />
@@ -45,6 +44,7 @@
         <activity android:name=".activities.ProfileEditUserActivity" />
         <activity android:name=".activities.MainUserActivity" />
         <activity android:name=".activities.MainSellerActivity" />
+        <activity android:name=".activities.MainActivity"            />
         <activity android:name=".activities.ForgotPasswordActivity" />
         <activity android:name=".activities.RegisterUserActivity" />
         <activity android:name=".activities.RegisterSellerActivity" />

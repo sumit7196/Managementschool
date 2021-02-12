@@ -57,332 +57,45 @@
                 android:textSize="45sp" />
 
 
-
         </androidx.appcompat.widget.Toolbar>
 
         <!--Simple value: Show Category-->
-        <ScrollView
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbars"
-            android:background="@android:color/holo_green_light"
-            >
+            tools:context=".MainActivity">
 
-            <LinearLayout
+            <fragment
+                android:id="@+id/frame_layout"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_height="0dp"
+                app:defaultNavHost="true"
+                app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navGraph="@navigation/mobile_navigation" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:background="#FFFFFF"
-                >
+                app:labelVisibilityMode="selected"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_navigation" />
 
-                <HorizontalScrollView
-                    android:id="@+id/horizontalSv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="horizontal"
-                    android:layout_below="@id/toolbars"
-                    android:background="@android:color/white"
-                    >
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:background="@drawable/shape_rect09"
-                        android:orientation="horizontal">
 
-
-                        <com.makeramen.roundedimageview.RoundedImageView
-                            android:src="@drawable/s2"
-                            android:layout_width="250dp"
-                            android:layout_height="200dp"
-                            app:riv_corner_radius="20dp"
-                            android:padding="10dp"
-                            />
-                        <com.makeramen.roundedimageview.RoundedImageView
-                            android:src="@drawable/s1"
-                            android:layout_width="250dp"
-                            android:layout_height="200dp"
-                            app:riv_corner_radius="20dp"
-                            android:padding="10dp"
-                            />
-                        <com.makeramen.roundedimageview.RoundedImageView
-                            android:src="@drawable/s3"
-                            android:layout_width="250dp"
-                            android:layout_height="200dp"
-                            app:riv_corner_radius="20dp"
-                            android:padding="10dp"
-                            />
-                        <com.makeramen.roundedimageview.RoundedImageView
-                            android:src="@drawable/s4"
-                            android:layout_width="250dp"
-                            android:layout_height="200dp"
-                            app:riv_corner_radius="20dp"
-                            android:padding="10dp"
-                            />
-
-                    </LinearLayout>
-
-
-                </HorizontalScrollView>
-
-
-                <LinearLayout
-                    android:id="@+id/AdmissionCv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shape_dashboardgrid_01"
-
-                    >
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        >
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Admission"
-                        android:textSize="30sp"
-                        android:fontFamily="@font/muli_black"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="30sp"
-                        android:textColor="@android:color/black"
-                        />
-
-
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_margin="10dp"
-                        android:layout_alignParentEnd="true"
-                        android:padding="15dp"
-                        android:background="@drawable/shape_circle03"
-                        android:src="@drawable/school" />
-
-                    </RelativeLayout>
-
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/BookCv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shape_dashboardgrid_02">
-
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Books"
-                        android:textSize="30sp"
-                        android:fontFamily="@font/muli_black"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="30sp"
-                        android:textColor="@android:color/black"
-                        />
-
-
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_margin="10dp"
-                        android:layout_alignParentEnd="true"
-                        android:background="@drawable/shape_circle03"
-                        android:padding="15dp"
-                        android:src="@drawable/book" />
-
-
-
-                    </RelativeLayout>
-
-
-
-
-
-
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tutorCv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shape_dashboardgrid_03"
-                    >
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor"
-                        android:textSize="30sp"
-                        android:fontFamily="@font/muli_black"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="30sp"
-                        android:textColor="@android:color/black"
-                        />
-
-
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_margin="10dp"
-                        android:layout_alignParentEnd="true"
-                        android:background="@drawable/shape_circle03"
-                        android:padding="15dp"
-                        android:src="@drawable/teacher" />
-
-                    </RelativeLayout>
-
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/conveyanceCv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shape_dashboardgrid_01"
-
-                    >
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Conveyance"
-                        android:textSize="30sp"
-                        android:fontFamily="@font/muli_black"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="30sp"
-                        android:textColor="@android:color/black"
-                        />
-
-
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_margin="10dp"
-                        android:layout_alignParentEnd="true"
-                        android:background="@drawable/shape_circle03"
-                        android:padding="15dp"
-                        android:src="@drawable/conveyance" />
-
-                    </RelativeLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/BlogCv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shape_dashboardgrid_02"
-
-                    >
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor"
-                        android:textSize="30sp"
-                        android:fontFamily="@font/muli_black"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="30sp"
-                        android:textColor="@android:color/black"
-                        />
-
-
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                       android:layout_margin="10dp"
-                        android:layout_alignParentEnd="true"
-                        android:background="@drawable/shape_circle03"
-                        android:padding="15dp"
-                        android:src="@drawable/blog" />
-
-                    </RelativeLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/rating"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shape_dashboardgrid_03"
-
-                    >
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rating"
-                        android:textSize="30sp"
-                        android:fontFamily="@font/muli_black"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="30sp"
-                        android:textColor="@android:color/black"
-                        />
-
-
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_margin="10dp"
-                        android:layout_alignParentEnd="true"
-                        android:background="@drawable/shape_circle03"
-                        android:padding="15dp"
-                        android:src="@drawable/rating" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-
-
-
-
-            </LinearLayout>
-
-        </ScrollView>
 
 
 
@@ -393,3 +106,4 @@
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
+
