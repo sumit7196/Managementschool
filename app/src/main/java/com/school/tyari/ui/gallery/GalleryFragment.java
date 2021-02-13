@@ -38,7 +38,7 @@ public class GalleryFragment extends Fragment {
         otherRecycler = view.findViewById(R.id.otherRecycler);
         independenceRecycler = view.findViewById(R.id.independenceRecycler);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("gallery");
+        reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("gallery");
 
         getConvoImage();
 

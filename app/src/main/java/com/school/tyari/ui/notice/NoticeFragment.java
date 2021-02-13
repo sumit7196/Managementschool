@@ -40,7 +40,7 @@ public class NoticeFragment extends Fragment {
         deleteNoticeRecycler = view.findViewById(R.id.deleteNoticeRecycler);
         progressBar = view.findViewById(R.id.progressBar);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Notice");
+        reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("Notice");
 
         deleteNoticeRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         deleteNoticeRecycler.setHasFixedSize(true);

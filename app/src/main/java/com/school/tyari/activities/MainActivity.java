@@ -48,10 +48,12 @@ import com.school.tyari.others.TutorActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+
+    private BottomNavigationView bottomNavigationView;
+    private NavController navController;
 
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
@@ -72,6 +74,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbars);
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        navController = Navigation.findNavController(this,R.id.frame_layout);
+
+        NavigationUI.setupWithNavController(bottomNavigationView,navController);
 
 
         setSupportActionBar(toolbar);
@@ -115,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     
  */
-
 
 
 
@@ -371,7 +377,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
     private void rateMe() {
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.school.tyari")));
@@ -389,6 +394,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else
             super.onBackPressed();
     }
+
+
 
     ///check its not know
 
