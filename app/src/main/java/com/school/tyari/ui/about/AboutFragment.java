@@ -29,8 +29,8 @@ public class AboutFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
 
         list = new ArrayList<>();
-        list.add(new BranchModel(R.drawable.ic_comp, "Computer Science", "Computer Science and Engineering started in year 2015. At present intake sheet in I-year is 30 student, and in lateral entry is 6."));
-        list.add(new BranchModel(R.drawable.ic_mech, "Mechanical Production", "Mechanical Engineering (Production) started in year 2013. At present intake sheet in I-year is 30 student, and in lateral entry is 6."));
+      //  list.add(new BranchModel(R.drawable.ic_comp, "Computer Science", "Computer Science and Engineering started in year 2015. At present intake sheet in I-year is 30 student, and in lateral entry is 6."));
+      //  list.add(new BranchModel(R.drawable.ic_mech, "Mechanical Production", "Mechanical Engineering (Production) started in year 2013. At present intake sheet in I-year is 30 student, and in lateral entry is 6."));
 
         adapter = new BranchAdapter( getContext(), list);
 

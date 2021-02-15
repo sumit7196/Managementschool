@@ -10,11 +10,22 @@
     <RelativeLayout
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:padding="10dp"
         android:background="@drawable/shape_rect01">
 
 
+        <TextView
+            android:id="@+id/txthello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="Hello!"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/black"
+            android:textSize="40sp" />
 
 
 
@@ -23,10 +34,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
+            android:layout_toEndOf="@+id/txthello"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="35sp"
+            android:fontFamily="@font/nunito_extrabold"
             android:layout_marginLeft="20dp"
-            android:textColor="@color/colorWhite"/>
+            android:layout_marginTop="10dp"
+            android:textColor="#E86B0A"/>
 
 
 
@@ -39,7 +53,7 @@
             android:layout_height="40dp"
             android:background="@drawable/shape_rect03"
             android:orientation="horizontal"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="45dp">
 
             <!--shops-->
             <TextView
@@ -77,6 +91,7 @@
             android:id="@+id/shopsRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/row_shop"/>
 

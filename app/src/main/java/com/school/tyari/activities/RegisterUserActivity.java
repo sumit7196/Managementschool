@@ -141,7 +141,7 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //open register seller activity
-                startActivity(new Intent(RegisterUserActivity.this, RegisterSellerActivity.class));
+             //   startActivity(new Intent(RegisterUserActivity.this, RegisterSellerActivity.class));
             }
         });
     }

@@ -25,7 +25,6 @@ import java.util.List;
 public class GalleryFragment extends Fragment {
     RecyclerView convoRecycler, otherRecycler,independenceRecycler;
     GalleryAdapter adapter;
-
     DatabaseReference reference;
 
 
@@ -38,18 +37,67 @@ public class GalleryFragment extends Fragment {
         otherRecycler = view.findViewById(R.id.otherRecycler);
         independenceRecycler = view.findViewById(R.id.independenceRecycler);
 
-        reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("gallery");
+      //  reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("gallery");
 
-        getConvoImage();
-
-        getOtherImage();
-
-        getindepenceImage();
+        checkingUserinfo();
+     //   getConvoImage();
+     //   getOtherImage();
+     //   getindepenceImage();
 
         return view;
     }
 
+    private void checkingUserinfo() {
+
+        //if user is seller ,start seller main screen
+        //if user is buyer,start user main screen
+
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+        ref
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            String account = "" + ds.child("account").getValue();
+                            if (account.equals("schoolcshp")) {
+
+                                //user Other
+                                getConvoImage();
+                                getOtherImage();
+                                getindepenceImage();
+
+
+                            }else if (account.equals("schoolsvm")) {
+
+                                //user Other
+                                getConvoImagesecond();
+                                getOtherImagesecond();
+                                getindepenceImagesecond();
+
+
+                            }
+
+
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+
+                    }
+                });
+
+    }
+
+
     private void getindepenceImage() {
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("gallery");
+
 
         reference.child("Independence Day").addValueEventListener(new ValueEventListener() {
 
@@ -77,6 +125,9 @@ public class GalleryFragment extends Fragment {
     }
 
     private void getOtherImage() {
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("gallery");
+
         reference.child("Other Events").addValueEventListener(new ValueEventListener() {
 
             List<String> imageList = new ArrayList<>();
@@ -102,6 +153,9 @@ public class GalleryFragment extends Fragment {
     }
 
     private void getConvoImage() {
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("gallery");
+
         reference.child("Convocation").addValueEventListener(new ValueEventListener() {
 
             List<String> imageList = new ArrayList<>();
@@ -125,4 +179,91 @@ public class GalleryFragment extends Fragment {
             }
         });
     }
+
+
+    private void getindepenceImagesecond() {
+        reference = FirebaseDatabase.getInstance().getReference("SchoolSecond").child("gallery");
+
+
+        reference.child("Independence Day").addValueEventListener(new ValueEventListener() {
+
+            List<String> imageList = new ArrayList<>();
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    String data = (String) snapshot.getValue();
+                    imageList.add(data);
+                }
+
+                adapter = new GalleryAdapter(getContext(), imageList);
+                independenceRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                independenceRecycler.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void getOtherImagesecond() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolSecond").child("gallery");
+
+
+        reference.child("Other Events").addValueEventListener(new ValueEventListener() {
+
+            List<String> imageList = new ArrayList<>();
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    String data = (String) snapshot.getValue();
+                    imageList.add(data);
+                }
+
+                adapter = new GalleryAdapter(getContext(), imageList);
+                otherRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                otherRecycler.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getConvoImagesecond() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolSecond").child("gallery");
+
+
+        reference.child("Convocation").addValueEventListener(new ValueEventListener() {
+
+            List<String> imageList = new ArrayList<>();
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    String data = (String) snapshot.getValue();
+                    imageList.add(data);
+                }
+
+                adapter = new GalleryAdapter(getContext(), imageList);
+                convoRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                convoRecycler.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }

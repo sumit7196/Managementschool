@@ -57,8 +57,8 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
 
     private ImageView shopIv;
-    private TextView shopNameTv,openCloseTv,filteredProductsTv,cartCountTv;
-    private ImageButton cartBtn,backBtn,filterProductBtn;
+    private TextView shopNameTv,filteredProductsTv,cartCountTv;
+    private ImageButton cartBtn,backBtn,filterProductBtn,callBtn;
     private EditText searchProductEt;
     private RecyclerView productsRv;
 
@@ -89,9 +89,9 @@ public class ShopDetailsActivity extends AppCompatActivity {
         //init ui views
         shopIv = findViewById(R.id.shopIv);
         shopNameTv = findViewById(R.id.shopNameTv);
-        openCloseTv = findViewById(R.id.openCloseTv);
         cartBtn = findViewById(R.id.cartBtn);
         backBtn = findViewById(R.id.backBtn);
+        callBtn = findViewById(R.id.callBtn);
         searchProductEt = findViewById(R.id.searchProductEt);
         filterProductBtn = findViewById(R.id.filterProductBtn);
         filteredProductsTv = findViewById(R.id.filteredProductsTv);
@@ -168,6 +168,16 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
                 checkingCartinfo();
                // showCartDialog();
+            }
+        });
+
+        callBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("tel:+918077198448");
+                Intent intent = new Intent(Intent.ACTION_DIAL,uri);
+                startActivity(intent);
+
             }
         });
 
@@ -827,7 +837,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
                 String shopOpen = ""+snapshot.child("shopOpen").getValue();
 
                 //set data
-                shopNameTv.setText(shopName);
+          //      shopNameTv.setText(shopName);
              //   emailTv.setText(shopEmail);
             //    deliveryFeeTv.setText("DeliveryFee: $"+deliveryFee);
             //    addressTv.setText(shopAddress);
@@ -835,10 +845,10 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
                 if (shopOpen.equals("true")){
 
-                    openCloseTv.setText("Open");
+                  //  openCloseTv.setText("Open");
                 }
                 else {
-                    openCloseTv.setText("Closed");
+                 //   openCloseTv.setText("Closed");
                 }
                 try {
                     Picasso.get().load(profileImage).into(shopIv);

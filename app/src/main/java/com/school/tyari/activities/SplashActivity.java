@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +35,9 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
+      //  ImageView imageView = findViewById(R.id.splash_gif);
+        // Glide.with(this).asGif().load(R.raw.spalshgif).into(imageView);
 
         //start login after 2 second
         new Handler().postDelayed(new Runnable() {

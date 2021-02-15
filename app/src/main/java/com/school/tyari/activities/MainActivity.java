@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
 
 
+        bottomNavigationView.setItemIconTintList(null);
         setSupportActionBar(toolbar);
 
         navigationView.bringToFront();
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_home);
@@ -122,12 +124,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     
  */
-
-
-
-
-
-
 
 
 

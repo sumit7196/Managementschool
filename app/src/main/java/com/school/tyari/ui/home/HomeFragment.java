@@ -10,9 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.school.tyari.R;
 import com.school.tyari.activities.MainActivity;
 import com.school.tyari.activities.MainUserActivity;
@@ -30,7 +37,7 @@ public class HomeFragment extends Fragment {
     private SliderLayout sliderLayout;
 
 
-    private LinearLayout BookCv,AdmissionCv,tutorCv,conveyanceCv,rating;
+    private LinearLayout BookCv,AdmissionCv,tutorCv,conveyanceCv;
 
 
     @Override
@@ -44,7 +51,6 @@ public class HomeFragment extends Fragment {
         AdmissionCv = view.findViewById(R.id.AdmissionCv);
         conveyanceCv = view.findViewById(R.id.conveyanceCv);
         tutorCv = view.findViewById(R.id.tutorCv);
-        rating = view.findViewById(R.id.rating);
 
 
 
@@ -53,6 +59,7 @@ public class HomeFragment extends Fragment {
         sliderLayout.setIndicatorAnimation(IndicatorAnimations.FILL);
         sliderLayout.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
         sliderLayout.setScrollTimeInSec(1);
+
 
         setSliderViews();
 
@@ -93,26 +100,14 @@ public class HomeFragment extends Fragment {
 
 
 
-        rating.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            /*    try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.school.tyari")));
-                }
-                catch (ActivityNotFoundException e){
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
-                }
-
-             */
-            }
-        });
-
-
 
 
         return view;
     }
+
+
+
+
 
 
     private void setSliderViews() {
@@ -120,16 +115,16 @@ public class HomeFragment extends Fragment {
             DefaultSliderView sliderView = new DefaultSliderView(getContext());
             switch (i){
                 case 0:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/gp-adampur.appspot.com/o/slider%2Fcollege.jpg?alt=media&token=1763b1ad-6bf7-47a5-be9e-db531b3ce1cf");
+                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/s1.jpg?alt=media&token=bbb9c7f3-6e35-4505-b743-61bc966030ed");
                     break;
                 case 1:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/gp-adampur.appspot.com/o/slider%2F001.JPG?alt=media&token=db445573-0344-4811-ab02-a1917b2ab007");
+                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/s2.jpeg?alt=media&token=ec73f3f4-7ed0-4d68-8254-a25a3fca5f68");
                     break;
                 case 2:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/gp-adampur.appspot.com/o/slider%2F002.JPG?alt=media&token=620d5166-784e-4317-a9ba-48532c5c671f");
+                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/s3.jpg?alt=media&token=9768450d-4434-4ad5-a585-73fc073066cc");
                     break;
                 case 3:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/gp-adampur.appspot.com/o/slider%2F003.JPG?alt=media&token=c70595d5-5969-4191-be2f-583eb171ae37");
+                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/s4.jpg?alt=media&token=b1ab4fca-ce03-4e93-ad0c-64fe494ae537");
                     break;
                 case 4:
                     sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/gp-adampur.appspot.com/o/slider%2F005.JPG?alt=media&token=bf0b5676-3c75-4616-a690-242093cccce0");
@@ -140,4 +135,7 @@ public class HomeFragment extends Fragment {
             sliderLayout.addSliderView(sliderView);
         }
     }
+
+
+
 }

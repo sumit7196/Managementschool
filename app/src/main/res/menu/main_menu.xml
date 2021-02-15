@@ -5,23 +5,17 @@
         <item
             android:id="@+id/nav_home"
             android:title="Home"
-            android:icon="@drawable/ic_home_black"/>
+            android:icon="@drawable/house"/>
 
         <item
             android:id="@+id/nav_profile"
             android:title="Profile"
-            android:icon="@drawable/ic_edit_black"/>
-
-        <item
-            android:id="@+id/nav_setting"
-            android:title="Setting"
-            android:icon="@drawable/ic_settings_black"/>
-
+            android:icon="@drawable/profileedit"/>
 
         <item
             android:id="@+id/nav_contactus"
             android:title="Contact"
-            android:icon="@drawable/ic_phone_black"/>
+            android:icon="@drawable/phone"/>
 
 
     </group>
@@ -34,17 +28,17 @@
             <item
                 android:id="@+id/nav_share"
                 android:title="Share"
-                android:icon="@drawable/ic_share_black"/>
+                android:icon="@drawable/share"/>
 
             <item
                 android:id="@+id/nav_rate"
                 android:title="Rate"
-                android:icon="@drawable/ic_rate_black"/>
+                android:icon="@drawable/rating"/>
 
             <item
                 android:id="@+id/nav_update"
                 android:title="Update"
-                android:icon="@drawable/ic_update_black"/>
+                android:icon="@drawable/update"/>
 
 
         </menu>
@@ -65,18 +59,18 @@
 
             <item
                 android:id="@+id/nav_privacy"
-                android:icon="@drawable/ic_policy_black"
+                android:icon="@drawable/policy"
                 android:title="Privacy Policy"
                 />
 
             <item
                 android:id="@+id/nav_terms"
-                android:icon="@drawable/ic_terms_black"
+                android:icon="@drawable/terms"
                 android:title="Terms"
                 />
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_logout_black"
+                android:icon="@drawable/logout"
                 android:title="logout"
                 />
 

@@ -513,9 +513,7 @@ public class ProfileEditUserActivity extends AppCompatActivity implements Locati
                             String city = ""+ds.child("city").getValue();
                             String state = ""+ds.child("state").getValue();
                             String country = ""+ds.child("country").getValue();
-                            latitude = Double.parseDouble(""+ds.child("latitude").getValue());
                             String email = ""+ds.child("email").getValue();
-                            longitude = Double.parseDouble(""+ds.child("longitude").getValue());
                             String online = ""+ds.child("online").getValue();
                             String phone = ""+ds.child("phone").getValue();
                             String profileImage = ""+ds.child("profileImage").getValue();
@@ -546,12 +544,6 @@ public class ProfileEditUserActivity extends AppCompatActivity implements Locati
                     }
                 });
     }
-
-
-
-
-
-
 
     private void showImagePickDialog() {
         //option to display in dialog
@@ -601,10 +593,6 @@ public class ProfileEditUserActivity extends AppCompatActivity implements Locati
 
     }
 
-    private void requestLocationPermission() {
-        ActivityCompat.requestPermissions(this,locationPermissions,LOCATION_REQUEST_CODE);
-    }
-
     private boolean checkStoragePermission() {
 
         boolean result = ContextCompat.checkSelfPermission(this,
@@ -627,13 +615,6 @@ public class ProfileEditUserActivity extends AppCompatActivity implements Locati
         return result && result1;
     }
 
-    private boolean checkLocationPermission() {
-
-        boolean result = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) ==
-                (PackageManager.PERMISSION_GRANTED);
-        return false;
-    }
 
     private void pickFromGallery() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);

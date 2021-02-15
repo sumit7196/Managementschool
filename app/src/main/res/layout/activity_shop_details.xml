@@ -11,19 +11,20 @@
     <RelativeLayout
         android:id="@+id/shopRl"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:background="@drawable/logo"
+        android:layout_height="140dp">
 
         <ImageView
             android:id="@+id/shopIv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@color/colorGray02"/>
+            android:src="@color/colorWhite"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="#79000000"/>
+            android:src="@color/colorWhite"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,65 +32,57 @@
             android:layout_marginTop="48dp"
             android:padding="10dp">
 
-            <TextView
-                android:id="@+id/shopNameTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.AppCompat.Title"
-                android:text="School Name"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp"/>
 
-
-            <TextView
-                android:id="@+id/openCloseTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Open"
-                android:layout_alignParentEnd="true"
-                android:padding="5dp"
-                android:textColor="@color/colorWhite"
-                android:layout_marginStart="3dp"/>
-
-            <TextView
-                android:id="@+id/deliveryFeeTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delivery Fee"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="3dp"
-                android:layout_below="@id/openCloseTv"
-                android:textColor="@color/colorWhite"
-                android:layout_marginStart="3dp"/>
-
-
-
-
-
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/txtassist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="For Assistance : "
+                    android:textSize="17sp"
+                    android:textColor="@android:color/black"
+                    />
 
                 <ImageButton
                     android:id="@+id/callBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/txtassist"
                     android:src="@drawable/ic_call_white"
                     android:background="@null"/>
 
-                <ImageButton
-                    android:id="@+id/mapBtn"
-                    android:layout_marginStart="8dp"
+
+                <TextView
+                    android:id="@+id/categoryclick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_map_white"
+                    android:text="Select class:"
+                    android:textSize="17sp"
+                    android:layout_toStartOf="@id/arrowBtn"
+                    android:textColor="@color/colorBlack"
+                    />
+
+                <ImageButton
+                    android:id="@+id/arrowBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down"
+                    android:layout_alignParentEnd="true"
                     android:background="@null"/>
 
-            </LinearLayout>
+
+
+
+
+
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
@@ -105,10 +98,11 @@
 
         <ImageButton
             android:id="@+id/cartBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="10dp"
             android:background="@null"
             android:src="@drawable/ic_cart_gray" />
 
@@ -116,8 +110,9 @@
             android:id="@+id/backBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginTop="12dp"
             android:background="@null"
-            android:src="@drawable/ic_back_white"/>
+            android:src="@drawable/ic_back_red"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -125,19 +120,21 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="Book Details"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp"/>
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/muli_black"
+            android:textSize="40sp"/>
         <!--Cart item count badge-->
         <TextView
             android:id="@+id/cartCountTv"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
             android:text="10"
             android:textSize="8sp"
             android:gravity="center"
             android:background="@drawable/shape_circle03"
             android:layout_alignParentEnd="true"
-            android:layout_width="20dp"
-            android:layout_height="20dp"/>
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
 
 
 
@@ -160,7 +157,7 @@
             android:background="@drawable/shape_rect02"
             android:drawableStart="@drawable/ic_search_gray"
             android:drawablePadding="10dp"
-            android:hint="Search"
+            android:hint="Search ex: class 1"
             android:padding="10dp"/>
 
         <!--filter Products-->

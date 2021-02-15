@@ -31,7 +31,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="College App"
+                    android:text="School App"
                     android:textSize="18dp"
                     android:textColor="@color/textColor"/>
 
