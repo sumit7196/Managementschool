@@ -244,7 +244,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
-        if (code.equals("cshp")){
+        if (code.equals("123456")){
 
             ref
                     .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -278,6 +278,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         }
 
+
         else if (code.equals("svm")){
             ref
                     .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -288,7 +289,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                                 if (account.equals("schoolsvm")) {
                                     progressDialog.dismiss();
                                     //user is seller
-                                    saveSecondschooldata();
+                                  //  saveSecondschooldata();
                                 }
 
 

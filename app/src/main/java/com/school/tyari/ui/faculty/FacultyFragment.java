@@ -62,15 +62,15 @@ public class FacultyFragment extends Fragment {
 
      //   reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("teacher");
 
-        checkingUserinfo();
-      //  englishDepartment();
-     //   mathDepartment();
-     //   physicsDepartment();
-     //   chemistryDepartment();
-     //   biologyDepartment();
-     //   computerDepartment();
-     //   physicalDepartment();
-     //   hindiDepartment();
+      //  checkingUserinfo();
+        englishDepartment();
+        mathDepartment();
+        physicsDepartment();
+        chemistryDepartment();
+        biologyDepartment();
+        computerDepartment();
+        physicalDepartment();
+        hindiDepartment();
 
 
         return view;
@@ -102,18 +102,17 @@ public class FacultyFragment extends Fragment {
                                 physicalDepartment();
                                 hindiDepartment();
 
-
                             }else if (account.equals("schoolsvm")) {
 
                                 //user Other
-                                englishDepartmentsecond();
-                                mathDepartmentsecond();
-                                physicsDepartmentsecond();
-                                chemistryDepartmentsecond();
-                                biologyDepartmentsecond();
-                                computerDepartmentsecond();
-                                physicalDepartmentsecond();
-                                hindiDepartmentsecond();
+                          //      englishDepartmentsecond();
+                          //      mathDepartmentsecond();
+                          //      physicsDepartmentsecond();
+                          //      chemistryDepartmentsecond();
+                          //      biologyDepartmentsecond();
+                          //      computerDepartmentsecond();
+                          //      physicalDepartmentsecond();
+                          //      hindiDepartmentsecond();
 
 
                             }
@@ -327,7 +326,8 @@ public class FacultyFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+               Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -398,8 +398,7 @@ public class FacultyFragment extends Fragment {
         });
     }
 
-
-
+    // Second School Department
 
     private void englishDepartmentsecond() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolSecond").child("teacher");

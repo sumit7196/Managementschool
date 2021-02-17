@@ -39,10 +39,10 @@ public class GalleryFragment extends Fragment {
 
       //  reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("gallery");
 
-        checkingUserinfo();
-     //   getConvoImage();
-     //   getOtherImage();
-     //   getindepenceImage();
+     //   checkingUserinfo();
+        getConvoImage();
+        getOtherImage();
+        getindepenceImage();
 
         return view;
     }

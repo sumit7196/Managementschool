@@ -172,7 +172,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
             case R.id.nav_logout:
-                checkingUser();
+              //  checkingUser();
+
+                logoutfirebasefirst();
                 break;
 
 
@@ -205,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             if (account.equals("schoolcshp")) {
                                 progressDialog.dismiss();
                                 //user Other
-                                logoutfirebasefirst();
+
 
                             }else if (account.equals("schoolsvm")) {
                                 progressDialog.dismiss();
@@ -249,12 +251,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 progressDialog.dismiss();
                                 //user is seller
                                 firebaseAuth.signOut();
+
                                 checkUser();
                             }
                             else {
                                 progressDialog.dismiss();
                                 //user is buyer
                                 firebaseAuth.signOut();
+
                                 checkUser();
                             }
                         }
@@ -282,12 +286,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 progressDialog.dismiss();
                                 //user is seller
                                 firebaseAuth.signOut();
+
                                 checkUser();
                             }
                             else {
                                 progressDialog.dismiss();
                                 //user is buyer
-                                firebaseAuth.signOut();
+                               // firebaseAuth.signOut();
                                 checkUser();
                             }
                         }

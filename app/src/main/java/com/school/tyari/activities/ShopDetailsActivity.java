@@ -105,11 +105,11 @@ public class ShopDetailsActivity extends AppCompatActivity {
         //get uid of the shop from intent
         shopUid = getIntent().getStringExtra("shopUid");
         firebaseAuth = FirebaseAuth.getInstance();
-        checkmyInfo();
-        checkloadShopProducts();
-       // loadMyInfo();
+      //  checkmyInfo();
+     //   checkloadShopProducts();
+        loadMyInfo();
         loadShopDetails();
-      //  loadShopProducts();
+        loadShopProducts();
 
 
 

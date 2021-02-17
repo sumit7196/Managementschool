@@ -4,9 +4,11 @@
 
     <solid android:color="#004D40"/>
 
+    <!--
     <stroke android:color="#FCDD0A0A"
         android:width="2dp"
         />
+        -->
 
 
 </shape>

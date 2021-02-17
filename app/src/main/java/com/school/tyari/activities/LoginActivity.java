@@ -146,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
                             }else if (account.equals("schoolsvm")) {
                                 progressDialog.dismiss();
                                 //user Other
-                               loginfirebasesecond();
+                    //           loginfirebasesecond();
 
                             }
 

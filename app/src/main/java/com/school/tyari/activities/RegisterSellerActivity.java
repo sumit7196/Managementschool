@@ -195,7 +195,8 @@ public class RegisterSellerActivity extends AppCompatActivity  {
                     public void onSuccess(AuthResult authResult) {
                         //account created
 
-                        checkUserType();
+                        saverFirebaseData();
+                      //  checkUserType();
 
                     }
                 })

@@ -152,9 +152,9 @@ public class ProfileEditUserActivity extends AppCompatActivity implements Locati
         address = addressEt.getText().toString().trim();
 
 
-        checkupdateprofile();
+//        checkupdateprofile();
 
-      //  updateProfile();
+        updateProfile();
 
     }
 

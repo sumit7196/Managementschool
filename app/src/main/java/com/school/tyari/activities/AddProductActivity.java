@@ -192,8 +192,8 @@ public class AddProductActivity extends AppCompatActivity {
             discountNote = "";
         }
 
-        checkingUser();
-       // addProduct();
+       // checkingUser();
+        addProduct();
 
     }
 

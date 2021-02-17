@@ -67,13 +67,12 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
         orderId = intent.getStringExtra("orderId");
 
         firebaseAuth = FirebaseAuth.getInstance();
-        checkingshopinfo();
-        checkingOrderDetails();
-        checkingOrderItems();
+      //  checkingshopinfo();
+      //  checkingOrderDetails();
+      //  checkingOrderItems();
 
-      //  loadShopInfo();
-
-      //  loadOrderDetails();
+        loadShopInfo();
+        loadOrderDetails();
         loadOrderedItems();
 
         backBtn.setOnClickListener(new View.OnClickListener() {

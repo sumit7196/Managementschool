@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/shape_rect06"
     tools:context="com.school.tyari.others.AdmissionActivity">
 
 
@@ -18,57 +17,68 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/lltxtconfectioner"
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-
-                <ImageButton
-                    android:id="@+id/backBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_back_white"
-                    android:background="@color/colorGray00"
-                    />
-
-
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="ADmission Form"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="30dp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/muli_black"
-
+                    android:id="@+id/txtfrst"
+                    style="@style/viewParent.headerText.NoMode"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="Here’s\nyour first\nstep with \nus! "
+                    android:textColor="@color/black" />
+                <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                    android:id="@+id/profileIv"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/iconIv"
+                    android:layout_alignParentEnd="true"
+                    app:c_border="true"
+                    app:c_border_color="@color/colorPrimary"
+                    app:c_border_width="1dp"
+                    android:src="@drawable/iconman"
                     />
-
-            </LinearLayout>
-
+            </RelativeLayout>
 
 
 
-            <EditText
-                android:id="@+id/nameEt"
-                android:layout_below="@+id/imageViewconf"
-                android:hint="Enter Full Name"
-                android:padding="13dp"
-                android:drawableStart="@drawable/ic_person_gray"
-                android:drawablePadding="5dp"
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Details"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                />
+
+            <soup.neumorphism.NeumorphCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorBlack"
-                android:layout_margin="15dp"
-                android:layout_marginTop="10dp"
-                android:inputType="textPersonName|textCapWords"
-                android:background="@drawable/shape_rect07"/>
+                style="@style/ShapeAppearance.Neumorph.CardView"
+                >
+
+                <EditText
+                    android:id="@+id/nameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Full Name"
+                    android:drawableStart="@drawable/ic_person_gray"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:background="@android:color/transparent"
+                    android:inputType="textPersonName|textCapWords"
+                    />
+
+            </soup.neumorphism.NeumorphCardView>
 
             <EditText
                 android:id="@+id/phoneEt"
@@ -91,10 +101,7 @@
                 android:layout_below="@id/phoneEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:orientation="horizontal">
-
-
 
 
                 <EditText

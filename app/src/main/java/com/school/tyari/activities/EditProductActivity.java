@@ -161,7 +161,7 @@ public class EditProductActivity extends AppCompatActivity {
     }
 
     private void loadProductDetails() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         reference.child(firebaseAuth.getUid()).child("Products").child(productId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -284,7 +284,7 @@ public class EditProductActivity extends AppCompatActivity {
 
             //update to db
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst");
             reference.child(firebaseAuth.getUid()).child("Products").child(productId).updateChildren(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -338,7 +338,7 @@ public class EditProductActivity extends AppCompatActivity {
                                 hashMap.put("discountAvailable",""+discountAvailable);
 
                                 //update to db
-                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst");
                                 reference.child(firebaseAuth.getUid()).child("Products").child(productId).updateChildren(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override

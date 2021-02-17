@@ -88,14 +88,14 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         loadMyInfo();
 
-        checkingUserinfo();
-        checkingOrderDetails();
-        checkingOrderItems();
+       // checkingUserinfo();
+      //  checkingOrderDetails();
+      //  checkingOrderItems();
 
 
-        //  loadBuyerInfo();
-      //  loadOrderDetails();
-//        loadOrderedItems();
+          loadBuyerInfo();
+        loadOrderDetails();
+        loadOrderedItems();
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -298,7 +298,7 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
 
 
     private void loadMyInfo() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         ref.child(firebaseAuth.getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -462,8 +462,6 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
 
     private void loadOrderedItems(){
         //load the products/items of order

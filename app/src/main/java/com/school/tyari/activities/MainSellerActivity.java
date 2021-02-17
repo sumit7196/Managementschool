@@ -128,7 +128,8 @@ public class MainSellerActivity extends AppCompatActivity {
                 //make offline
                 //sign out
                 //go to login activity
-                checkingUser();
+              //  checkingUser();
+                loginfirebasefirst();
 
              //   makeMeOffline();
 
@@ -246,7 +247,7 @@ public class MainSellerActivity extends AppCompatActivity {
         orderShopArrayList = new ArrayList<>();
 
         //load orders of shop
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         ref.child(firebaseAuth.getUid()).child("Orders")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -275,7 +276,7 @@ public class MainSellerActivity extends AppCompatActivity {
         productList = new ArrayList<>();
 
         //get all products
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         reference.child(firebaseAuth.getUid()).child("Products")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -314,7 +315,7 @@ public class MainSellerActivity extends AppCompatActivity {
         productList = new ArrayList<>();
 
         //get all products
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         reference.child(firebaseAuth.getUid()).child("Products")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -385,7 +386,7 @@ public class MainSellerActivity extends AppCompatActivity {
     }
 
     private void loadMyInfo() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override

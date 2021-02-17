@@ -64,7 +64,8 @@ public class MainUserActivity extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(false);
 
        firebaseAuth = FirebaseAuth.getInstance();
-        checkingUserinfo();
+       // checkingUserinfo();
+        loadMyInfo();
 
         //at start show shop Ui
         showShopsUI();

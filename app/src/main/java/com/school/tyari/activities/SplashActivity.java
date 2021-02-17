@@ -50,9 +50,9 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                 } else {
                     //user is logger in,check user type
-                    checkinguser();
+                 //   checkinguser();
 
-                  //  checkUserType();
+                    checkUserType();
                 }
 
             }

@@ -196,7 +196,7 @@ public class ProfileEditSellerActivity extends AppCompatActivity implements Loca
 
 
             //update to db
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
             ref.child(firebaseAuth.getUid()).updateChildren(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -251,7 +251,7 @@ public class ProfileEditSellerActivity extends AppCompatActivity implements Loca
 
 
                                 //update to db
-                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
                                 ref.child(firebaseAuth.getUid()).updateChildren(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
@@ -296,7 +296,7 @@ public class ProfileEditSellerActivity extends AppCompatActivity implements Loca
     }
 
     private void loadMyInfo() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
         ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override

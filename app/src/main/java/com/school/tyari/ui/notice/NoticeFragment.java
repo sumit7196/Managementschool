@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +33,8 @@ public class NoticeFragment extends Fragment {
     private NoticeAdapter adapter;
 
     private ProgressDialog progressDialog;
+    private FirebaseAuth firebaseAuth;
+
 
     private DatabaseReference reference;
 
@@ -45,13 +48,17 @@ public class NoticeFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar);
 
 
- //       reference = FirebaseDatabase.getInstance().getReference().child("Notice");
+     //   reference = FirebaseDatabase.getInstance().getReference();
 
         deleteNoticeRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         deleteNoticeRecycler.setHasFixedSize(true);
 
-        checkingUserinfo();
-     //   getNotice();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+      //  checkingUserinfo();
+
+        getNoticefirst();
+      // getNoticesecond();
 
         return view;
     }
@@ -62,9 +69,9 @@ public class NoticeFragment extends Fragment {
         //if user is buyer,start user main screen
 
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-        ref
+        reference
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -73,16 +80,14 @@ public class NoticeFragment extends Fragment {
                             if (account.equals("schoolcshp")) {
 
                                 //user Other
-                                getNotice();
-
-                            }else if (account.equals("schoolsvm")) {
-                                //user Other
-                                getNoticesecond();
-
-
+                             getNoticefirst();
                             }
 
+                            else if (account.equals("schoolsvm")){
+                                //user Other
+                             //  getNoticesecond();
 
+                            }
                         }
                     }
 
@@ -90,6 +95,7 @@ public class NoticeFragment extends Fragment {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
+                        Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -97,9 +103,9 @@ public class NoticeFragment extends Fragment {
     }
 
 
-    private void getNotice() {
-
+    private void getNoticefirst() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("Notice");
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -120,7 +126,7 @@ public class NoticeFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 progressBar.setVisibility(View.GONE);
 
-                Toast.makeText(getContext(),databaseError.getMessage() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),databaseError.getMessage() , Toast.LENGTH_SHORT).show();
             }
         });
     }

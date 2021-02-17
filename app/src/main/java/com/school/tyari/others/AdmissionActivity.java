@@ -32,7 +32,6 @@ public class AdmissionActivity extends AppCompatActivity {
 
     private EditText nameEt,phoneEt,stateEt,cityEt,commentEt,addressEt,classEt,schoolNameEt;
     private Button btn_conf_order;
-    private ImageView backBtn;
 
 
     FirebaseDatabase database;
@@ -56,7 +55,6 @@ public class AdmissionActivity extends AppCompatActivity {
         classEt = findViewById(R.id.classEt);
         schoolNameEt = findViewById(R.id.schoolNameEt);
         btn_conf_order = findViewById(R.id.btn_conf_order);
-        backBtn = findViewById(R.id.backBtn);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -69,16 +67,8 @@ public class AdmissionActivity extends AppCompatActivity {
 
 
 
-        //go back to previous activity
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-                finish();
-                Intent i=new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-            }
-        });
+
+
 
        // animation_view.setOnClickListener(new View.OnClickListener() {
      //       @Override
