@@ -20,9 +20,15 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".TermsActivity"></activity>
         <activity android:name=".FullImageView"/>
+        <activity android:name=".quiz.SplashActivitySecond"/>
         <activity android:name=".PrivacyPolicyActivity" />
         <activity android:name=".others.CallActivity" />
         <activity android:name=".others.ArtCraftActivity" />
+        <activity android:name=".quiz.CategoryActivity"/>
+        <activity android:name=".quiz.MainActivitytwo"/>
+        <activity android:name=".quiz.QuestionActivity"/>
+        <activity android:name=".quiz.ScoreActivity"/>
+        <activity android:name=".quiz.SetsActivity"/>
         <activity android:name=".others.BlogReviewsActivity" />
         <activity android:name=".others.BlogActivity" />
         <activity android:name=".others.TutorActivity" />

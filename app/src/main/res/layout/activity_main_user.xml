@@ -39,7 +39,7 @@
             android:textSize="35sp"
             android:fontFamily="@font/nunito_extrabold"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textColor="#E86B0A"/>
 
 
@@ -53,7 +53,7 @@
             android:layout_height="60dp"
             android:background="@drawable/shape_rect03"
             android:orientation="horizontal"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="5dp">
 
             <!--shops-->
             <TextView

@@ -60,43 +60,7 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-    private void checkinguser() {
 
-        //if user is seller ,start seller main screen
-        //if user is buyer,start user main screen
-
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-
-        ref
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            String account = "" + ds.child("account").getValue();
-                            if (account.equals("schoolcshp")) {
-                                //user Other
-                                checkUserType();
-
-                            } else if (account.equals("schoolsvm")) {
-                                //user Other
-                                checkUserType2();
-
-                            }
-
-
-                        }
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                        Toast.makeText(SplashActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-    }
 
     private void checkUserType() {
         //if user is seller ,start seller main screen
@@ -129,40 +93,6 @@ public class SplashActivity extends AppCompatActivity {
                 });
     }
 
-    private void checkUserType2() {
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
-
-        ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            String accountType = ""+ds.child("accountType").getValue();
-                            if (accountType.equals("User")) {
-
-                                //user is seller
-                                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                                finish();
-                            }
-                            else {
-                                //user is buyer
-                                startActivity(new Intent(SplashActivity.this,MainSellerActivity.class));
-                                finish();
-                            }
-                        }
-                    }
-
-
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-
-    }
 
 }

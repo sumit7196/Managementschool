@@ -48,63 +48,22 @@ public class NoticeFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar);
 
 
-     //   reference = FirebaseDatabase.getInstance().getReference();
+        reference = FirebaseDatabase.getInstance().getReference().child("Notice");
 
         deleteNoticeRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         deleteNoticeRecycler.setHasFixedSize(true);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-      //  checkingUserinfo();
 
-        getNoticefirst();
-      // getNoticesecond();
+        getNotice();
 
         return view;
     }
 
-    private void checkingUserinfo() {
-
-        //if user is seller ,start seller main screen
-        //if user is buyer,start user main screen
 
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-
-        reference
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            String account = "" + ds.child("account").getValue();
-                            if (account.equals("schoolcshp")) {
-
-                                //user Other
-                             getNoticefirst();
-                            }
-
-                            else if (account.equals("schoolsvm")){
-                                //user Other
-                             //  getNoticesecond();
-
-                            }
-                        }
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                        Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-
-    }
-
-
-    private void getNoticefirst() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolFirst").child("Notice");
+    private void getNotice() {
 
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -131,32 +90,5 @@ public class NoticeFragment extends Fragment {
         });
     }
 
-    private void getNoticesecond() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SchoolSecond").child("Notice");
-
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    NoticeData data = snapshot.getValue(NoticeData.class);
-                    list.add(0,data);
-                }
-
-                adapter = new NoticeAdapter(getContext(), list);
-                adapter.notifyDataSetChanged();
-                progressBar.setVisibility(View.GONE);
-                deleteNoticeRecycler.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                progressBar.setVisibility(View.GONE);
-
-                Toast.makeText(getContext(),databaseError.getMessage() , Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
 }

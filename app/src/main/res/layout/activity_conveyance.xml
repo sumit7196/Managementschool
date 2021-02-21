@@ -67,50 +67,11 @@
                 android:maxLength="10"
                 android:background="@drawable/shape_rect07"/>
 
-            <LinearLayout
-                android:id="@+id/addressLl"
-                android:layout_below="@id/phoneEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
 
-                android:orientation="horizontal">
-
-
-                <EditText
-                    android:id="@+id/stateEt"
-                    android:hint="State"
-                    android:padding="13dp"
-                    android:drawableStart="@drawable/ic_location_gray"
-                    android:drawablePadding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorBlack"
-                    android:layout_margin="15dp"
-                    android:inputType="textPostalAddress"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_rect07"/>
-
-
-
-                <EditText
-                    android:id="@+id/cityEt"
-                    android:hint="City"
-                    android:padding="13dp"
-                    android:drawableStart="@drawable/ic_location_gray"
-                    android:drawablePadding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:textColorHint="@color/colorBlack"
-                    android:inputType="textPostalAddress"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_rect07"/>
-
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/addressEt"
-                android:layout_below="@+id/addressLl"
+                android:layout_below="@+id/phoneEt"
                 android:hint="Complete Address"
                 android:padding="13dp"
                 android:drawableStart="@drawable/ic_location_gray"

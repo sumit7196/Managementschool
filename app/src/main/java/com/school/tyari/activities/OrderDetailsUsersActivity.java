@@ -409,27 +409,8 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
     }
 
 
-   /* private void findAddress(String latitude, String longitude) {
-        double lat = Double.parseDouble(latitude);
-        double lon = Double.parseDouble(longitude);
-
-        //find address ,country ,state ,city
-        Geocoder geocoder;
-        List<Address> addresses;
-        geocoder = new Geocoder(this, Locale.getDefault());
-
-        try {
-            addresses = geocoder.getFromLocation(lat,lon,1);
-
-            String address = addresses.get(0).getAddressLine(0); //complete address
-            addressTv.setText(address);
-        }
-        catch (Exception e){
-
-        }
-
-    */
-
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

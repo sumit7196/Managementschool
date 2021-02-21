@@ -7,6 +7,16 @@
     android:orientation="vertical"
     tools:context="com.school.tyari.activities.AddProductActivity">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
     <!--toolbar-->
     <RelativeLayout
         android:layout_width="match_parent"
@@ -71,17 +81,7 @@
             android:inputType="textCapSentences|textMultiLine"
             android:layout_below="@id/titleEt"/>
 
-        <EditText
-            android:id="@+id/codeEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:hint="School Code"
-            android:background="@drawable/shape_rect02"
-            android:drawableStart="@drawable/ic_title_gray"
-            android:padding="10dp"
-            android:inputType="textCapSentences|textMultiLine"
-            android:layout_below="@id/descriptionEt"/>
+
 
         <TextView
             android:id="@+id/categoryTv"
@@ -94,7 +94,7 @@
             android:drawableStart="@drawable/ic_categories_gray"
             android:padding="10dp"
             android:inputType="textPersonName|textCapWords"
-            android:layout_below="@id/codeEt"/>
+            android:layout_below="@id/descriptionEt"/>
 
         <EditText
             android:id="@+id/quantityEt"
@@ -171,5 +171,8 @@
             android:layout_marginTop="5dp"/>
 
     </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

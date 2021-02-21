@@ -7,11 +7,12 @@
     android:background="@drawable/shape_splash"
     tools:context="com.school.tyari.activities.SplashActivity">
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/iconIv"
         android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:src="@drawable/iconsplash"
+        android:layout_height="230dp"
+        android:src="@drawable/sclboy"
+        android:background="#004D40"
         android:layout_centerInParent="true" />
 
 

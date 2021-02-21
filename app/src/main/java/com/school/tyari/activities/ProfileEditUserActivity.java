@@ -478,9 +478,9 @@ public class ProfileEditUserActivity extends AppCompatActivity implements Locati
 
                             nameEt.setText(name);
                             phoneEt.setText(phone);
-                            countryEt.setText(country);
-                            stateEt.setText(state);
-                            cityEt.setText(city);
+//                            countryEt.setText(country);
+//                            stateEt.setText(state);
+//                            cityEt.setText(city);
                             addressEt.setText(address);
 
                             try {
@@ -510,9 +510,9 @@ public class ProfileEditUserActivity extends AppCompatActivity implements Locati
                             String accountType = ""+ds.child("accountType").getValue();
                             String name = ""+ds.child("name").getValue();
                             String address = ""+ds.child("address").getValue();
-                            String city = ""+ds.child("city").getValue();
-                            String state = ""+ds.child("state").getValue();
-                            String country = ""+ds.child("country").getValue();
+                        //    String city = ""+ds.child("city").getValue();
+                        //    String state = ""+ds.child("state").getValue();
+                       //     String country = ""+ds.child("country").getValue();
                             String email = ""+ds.child("email").getValue();
                             String online = ""+ds.child("online").getValue();
                             String phone = ""+ds.child("phone").getValue();

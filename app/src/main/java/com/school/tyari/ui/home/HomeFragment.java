@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
     private SliderLayout sliderLayout;
 
 
-    private LinearLayout BookCv,AdmissionCv,tutorCv,conveyanceCv;
+    private LinearLayout BookCv,tutorCv,conveyanceCv;
 
 
     @Override
@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment {
 
 
         BookCv = view.findViewById(R.id.BookCv);
-        AdmissionCv = view.findViewById(R.id.AdmissionCv);
+   //     AdmissionCv = view.findViewById(R.id.AdmissionCv);
         conveyanceCv = view.findViewById(R.id.conveyanceCv);
         tutorCv = view.findViewById(R.id.tutorCv);
 
@@ -81,6 +81,10 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+
+        /*
         AdmissionCv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +93,8 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+         */
 
         tutorCv.setOnClickListener(new View.OnClickListener() {
             @Override

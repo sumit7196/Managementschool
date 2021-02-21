@@ -11,8 +11,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,6 +47,7 @@ import com.school.tyari.others.CallActivity;
 import com.school.tyari.others.ConveyanceActivity;
 import com.school.tyari.others.SchoolDetailsActivity;
 import com.school.tyari.others.TutorActivity;
+import com.school.tyari.quiz.SplashActivitySecond;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -162,6 +165,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_update:
                 checkforupdate();
                 break;
+            case R.id.nav_quiz:
+                startActivity(new Intent(MainActivity.this, SplashActivitySecond.class));
+                finish();
+                break;
+
             case R.id.nav_privacy:
                 startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
                 finish();
@@ -174,7 +182,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_logout:
               //  checkingUser();
 
-                logoutfirebasefirst();
+                makeMeOffline();
+            //    logoutfirebasefirst();
                 break;
 
 
@@ -190,45 +199,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    private void checkingUser() {
 
-        //if user is seller ,start seller main screen
-        //if user is buyer,start user main screen
-
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-
-        ref
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            String account = "" + ds.child("account").getValue();
-                            if (account.equals("schoolcshp")) {
-                                progressDialog.dismiss();
-                                //user Other
-
-
-                            }else if (account.equals("schoolsvm")) {
-                                progressDialog.dismiss();
-                                //user Other
-                                logoutfirebasesecond();
-                            }
-
-
-                        }
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                        Toast.makeText(MainActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-
-    }
 
     private void logoutfirebasefirst() {
         //if user is seller ,start seller main screen
@@ -272,40 +243,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void logoutfirebasesecond() {
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
-
-        ref
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds: snapshot.getChildren()) {
-                            String accountType = "" + ds.child("accountType").getValue();
-                            if (accountType.equals("seller")) {
-                                progressDialog.dismiss();
-                                //user is seller
-                                firebaseAuth.signOut();
-
-                                checkUser();
-                            }
-                            else {
-                                progressDialog.dismiss();
-                                //user is buyer
-                               // firebaseAuth.signOut();
-                                checkUser();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-
-    }
 
 
     private void makeMeOffline() {
@@ -390,11 +327,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }else
-            super.onBackPressed();
-    }
+     //   if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+   //         drawerLayout.closeDrawer(GravityCompat.START);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setMessage("Are you sure you want to Exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                           MainActivity.super.onBackPressed();
+                           // finish();
+                        }
+                    })
+
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
+        }
+ //       else
+
+
+
+
+        //    super.onBackPressed();
+  //  }
 
 
 

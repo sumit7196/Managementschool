@@ -109,7 +109,8 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         //logged in succesfully
-                      checkingUser();
+                        loginfirebasefirst();
+                   //   checkingUser();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
