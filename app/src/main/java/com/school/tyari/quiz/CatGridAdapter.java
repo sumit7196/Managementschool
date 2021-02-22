@@ -15,9 +15,9 @@ import java.util.Random;
 
 public class CatGridAdapter extends BaseAdapter {
 
-    private List<String> catList;
+    private List<CategoryModel> catList;
 
-    public CatGridAdapter(List<String> catList) {
+    public CatGridAdapter(List<CategoryModel> catList) {
         this.catList = catList;
     }
 
@@ -56,19 +56,19 @@ public class CatGridAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-
+                SplashActivityQuiz.selected_cat_index = position;
                 Intent intent = new Intent(parent.getContext(),SetsActivity.class);
-                intent.putExtra("CATEGORY_ID",position +1);
+
                 parent.getContext().startActivity(intent);
             }
         });
 
 
-        ((TextView) view.findViewById(R.id.catName)).setText(catList.get(position));
+        ((TextView) view.findViewById(R.id.catName)).setText(catList.get(position).getName());
 
-        Random rnd = new Random();
-        int color = Color.argb(255, rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255));
-        view.setBackgroundColor(color);
+      //  Random rnd = new Random();
+     //   int color = Color.argb(255, rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255));
+    //     view.setBackgroundColor(color);
 
 
         return view;

@@ -19,19 +19,27 @@ public class CategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         getSupportActionBar().setTitle("Categories");
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         catGrid = findViewById(R.id.catGridview);
 
 
+
         CatGridAdapter adapter = new CatGridAdapter(catList);
+
         catGrid.setAdapter(adapter);
 
 
+
     }
+
 
 
     @Override
@@ -40,8 +48,12 @@ public class CategoryActivity extends AppCompatActivity {
         if(item.getItemId() == android.R.id.home)
         {
             CategoryActivity.this.finish();
+
         }
 
+
         return super.onOptionsItemSelected(item);
+
     }
+
 }

@@ -155,10 +155,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_update:
                 checkforupdate();
                 break;
-            case R.id.nav_quiz:
-                startActivity(new Intent(MainActivity.this, SplashActivityQuiz.class));
-                finish();
-                break;
 
             case R.id.nav_privacy:
                 startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));

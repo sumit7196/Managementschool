@@ -12,6 +12,8 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -19,6 +21,9 @@ import com.school.tyari.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.school.tyari.quiz.SplashActivityQuiz.catList;
+import static com.school.tyari.quiz.SplashActivityQuiz.selected_cat_index;
 
 public class SetsActivity extends AppCompatActivity {
 
@@ -37,10 +42,9 @@ public class SetsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.set_toolbar);
         setSupportActionBar(toolbar);
 
-        String title = getIntent().getStringExtra("CATEGORY");
-        category_id = getIntent().getIntExtra("CATEGORY_ID",1);
 
-        getSupportActionBar().setTitle(title);
+
+        getSupportActionBar().setTitle(catList.get(selected_cat_index).getName());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -65,29 +69,43 @@ public class SetsActivity extends AppCompatActivity {
 
         setsIDs.clear();
 
-        firestore.collection("QUIZ").document("CAT" + String.valueOf(category_id))
-                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+        firestore.collection("QUIZ").document(catList.get(selected_cat_index).getId())
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot doc = task.getResult();
-                    if (doc.exists()) {
-                        long sets = (long) doc.get("SETS");
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                        SetsAdapter adapter = new SetsAdapter((int) sets);
-                        sets_grid.setAdapter(adapter);
+                long noOfSets = (long)documentSnapshot.get("SETS");
 
-                    } else {
-                        Toast.makeText(SetsActivity.this, "No CAT Document Exists", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                } else {
-                    Toast.makeText(SetsActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                for(int i=1; i <= noOfSets; i++)
+                {
+                    setsIDs.add(documentSnapshot.getString("SET" + String.valueOf(i) + "_ID"));
                 }
-                loadingDialog.cancel();
+
+
+
+
+                SetsAdapter adapter = new SetsAdapter(setsIDs.size());
+                sets_grid.setAdapter(adapter);
+
+                loadingDialog.dismiss();
 
             }
-        });
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SetsActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                        loadingDialog.dismiss();
+                    }
+                });
+
+
+
+
+
+
+
     }
 
 

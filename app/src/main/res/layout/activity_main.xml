@@ -37,7 +37,6 @@
             android:layout_height="120dp"
             android:layout_alignParentEnd="true"
             app:buttonGravity="center_vertical"
-
             android:layout_margin="5dp"
             android:background="@drawable/shape_rect01"
             android:theme="?attr/actionBarSplitStyle"

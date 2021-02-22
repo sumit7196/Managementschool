@@ -21,7 +21,7 @@ public class SplashActivityQuiz extends AppCompatActivity {
 
     private TextView appName;
 
-    public static List<String> catList = new ArrayList<>();
+    public static List<CategoryModel> catList = new ArrayList<>();
     public static int selected_cat_index = 0;
     private FirebaseFirestore firestore;
 
@@ -30,7 +30,7 @@ public class SplashActivityQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_quiz);
 
-        //  appName = findViewById(R.id.appName);
+          appName = findViewById(R.id.appName);
 
         //  Typeface typeface = ResourcesCompat.getFont(this,R.font.blacklist);
         //  appName.setTypeface(typeface);
@@ -68,9 +68,10 @@ public class SplashActivityQuiz extends AppCompatActivity {
 
                         for(int i=1; i <= count; i++)
                         {
-                            String catName = doc.getString("CAT" + String.valueOf(i));
+                            String catName = doc.getString("CAT" + String.valueOf(i) + "_NAME");
+                            String catID = doc.getString("CAT" + String.valueOf(i) + "_ID");
 
-                            catList.add(catName);
+                            catList.add(new CategoryModel(catID,catName));
                         }
 
 

@@ -27,6 +27,7 @@ import com.school.tyari.others.AdmissionActivity;
 import com.school.tyari.others.BlogActivity;
 import com.school.tyari.others.ConveyanceActivity;
 import com.school.tyari.others.TutorActivity;
+import com.school.tyari.quiz.SplashActivityQuiz;
 import com.smarteist.autoimageslider.DefaultSliderView;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -37,7 +38,7 @@ public class HomeFragment extends Fragment {
     private SliderLayout sliderLayout;
 
 
-    private LinearLayout BookCv,tutorCv,conveyanceCv;
+    private LinearLayout BookCv,tutorCv,conveyanceCv,quizCv;
 
 
     @Override
@@ -51,6 +52,7 @@ public class HomeFragment extends Fragment {
    //     AdmissionCv = view.findViewById(R.id.AdmissionCv);
         conveyanceCv = view.findViewById(R.id.conveyanceCv);
         tutorCv = view.findViewById(R.id.tutorCv);
+        quizCv = view.findViewById(R.id.quizCv);
 
 
 
@@ -105,6 +107,13 @@ public class HomeFragment extends Fragment {
         });
 
 
+        quizCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SplashActivityQuiz.class );
+                startActivity(intent);
+            }
+        });
 
 
 
