@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -19,8 +18,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,16 +35,9 @@ import com.school.tyari.PrivacyPolicyActivity;
 import com.school.tyari.R;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 import com.school.tyari.TermsActivity;
-import com.school.tyari.others.AdmissionActivity;
-import com.school.tyari.others.BlogActivity;
-import com.school.tyari.others.CallActivity;
-import com.school.tyari.others.ConveyanceActivity;
-import com.school.tyari.others.SchoolDetailsActivity;
-import com.school.tyari.others.TutorActivity;
-import com.school.tyari.quiz.SplashActivitySecond;
+import com.school.tyari.quiz.SplashActivityQuiz;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -166,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 checkforupdate();
                 break;
             case R.id.nav_quiz:
-                startActivity(new Intent(MainActivity.this, SplashActivitySecond.class));
+                startActivity(new Intent(MainActivity.this, SplashActivityQuiz.class));
                 finish();
                 break;
 
