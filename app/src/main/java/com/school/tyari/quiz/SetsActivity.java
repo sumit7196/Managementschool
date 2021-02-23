@@ -39,14 +39,14 @@ public class SetsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sets);
-        Toolbar toolbar = findViewById(R.id.set_toolbar);
-        setSupportActionBar(toolbar);
+    //    Toolbar toolbar = findViewById(R.id.set_toolbar);
+    //    setSupportActionBar(toolbar);
 
 
 
-        getSupportActionBar().setTitle(catList.get(selected_cat_index).getName());
+//        getSupportActionBar().setTitle(catList.get(selected_cat_index).getName());
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sets_grid = findViewById(R.id.sets_gridview);
 

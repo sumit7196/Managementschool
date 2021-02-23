@@ -168,10 +168,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private void startTimer()
     {
-        countDown = new CountDownTimer(12000, 1000) {
+        countDown = new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                if(millisUntilFinished < 10000)
+                if(millisUntilFinished < 60000)
                     timer.setText(String.valueOf(millisUntilFinished / 1000));
             }
 

@@ -2,9 +2,13 @@ package com.school.tyari.quiz;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,11 +36,11 @@ public class SplashActivityQuiz extends AppCompatActivity {
 
           appName = findViewById(R.id.appName);
 
-        //  Typeface typeface = ResourcesCompat.getFont(this,R.font.blacklist);
-        //  appName.setTypeface(typeface);
+          Typeface typeface = ResourcesCompat.getFont(this,R.font.blacklist);
+          appName.setTypeface(typeface);
 
-        //  Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.myanim);
-        //  appName.setAnimation(anim);
+          Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.myanim);
+          appName.setAnimation(anim);
 
         firestore = FirebaseFirestore.getInstance();
 

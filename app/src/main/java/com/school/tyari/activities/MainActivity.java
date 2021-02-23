@@ -261,35 +261,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void makeMeOfflinesecond() {
-        //after logging in , make user online
-        progressDialog.setMessage("Logging Out...");
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("online", "false");
-
-        //update value to db
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
-        ref.child(firebaseAuth.getUid()).updateChildren(hashMap)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        //update succesfully
-                        firebaseAuth.signOut();
-                        checkUser();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //failed updating
-                        progressDialog.dismiss();
-                        Toast.makeText(MainActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-    }
-
     private void checkUser() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user == null){
