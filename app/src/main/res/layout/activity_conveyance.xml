@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_rect08"
     tools:context="com.school.tyari.others.ConveyanceActivity">
 
     <ScrollView
@@ -18,35 +17,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/lltxtconfectioner"
+            <pl.droidsonroids.gif.GifImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="180dp"
+                android:src="@drawable/cab"
+                />
 
-
-                <ImageButton
-                    android:id="@+id/backBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_back_white"
-                    android:background="@color/colorGray00"/>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Conveyance"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="30dp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-
-                    />
-
-            </LinearLayout>
 
 
 
@@ -65,7 +41,8 @@
                 android:singleLine="true"
                 android:inputType="phone"
                 android:maxLength="10"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"
+                />
 
 
 
@@ -81,7 +58,8 @@
                 android:layout_margin="15dp"
                 android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"
+                />
 
             <EditText
                 android:id="@+id/startArrivalEt"
@@ -95,7 +73,8 @@
                 android:layout_margin="15dp"
                 android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"
+                />
 
             <EditText
                 android:id="@+id/endDestinationEt"
@@ -109,7 +88,8 @@
                 android:layout_margin="15dp"
                 android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"
+                />
 
             <EditText
                 android:id="@+id/commentEt"
@@ -123,7 +103,8 @@
                 android:layout_margin="15dp"
                 android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"
+                />
 
 
             <Button

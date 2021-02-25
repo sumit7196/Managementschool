@@ -18,7 +18,8 @@
         android:roundIcon="@id/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".quiz.ScoreActivity"></activity>
+        <activity android:name=".others.HomeworkActivity"></activity>
+        <activity android:name=".quiz.ScoreActivity" />
         <activity android:name=".quiz.QuestionActivity" />
         <activity android:name=".quiz.SetsActivity" />
         <activity android:name=".quiz.MainQuizActivity" />

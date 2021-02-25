@@ -56,7 +56,6 @@
 
     </RelativeLayout>
 
-
     <!--Toolbar-->
     <RelativeLayout
         android:id="@+id/toolbarRl"
@@ -89,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Book Details"
+            android:text="Books"
             android:textColor="@android:color/white"
             android:fontFamily="@font/muli_black"
             android:textSize="40sp"/>
@@ -140,7 +139,7 @@
             android:layout_marginEnd="5dp"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_filter_gray"/>
+            android:src="@drawable/filter"/>
         <!--show filter product title-->
         <TextView
             android:id="@+id/filteredProductsTv"

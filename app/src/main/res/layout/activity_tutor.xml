@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/shape_rect09"
     tools:context="com.school.tyari.others.TutorActivity">
 
     <ScrollView
@@ -19,36 +18,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/lltxtconfectioner"
+            <pl.droidsonroids.gif.GifImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <ImageButton
-                    android:id="@+id/backBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_back_white"
-                    android:background="@color/colorGray00"/>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tutor"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="30dp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/muli_black"
-
-                    />
-
-            </LinearLayout>
+                android:layout_height="180dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/tuition"
+                />
 
 
 
@@ -62,53 +37,14 @@
                 android:drawablePadding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorBlack"
                 android:layout_margin="15dp"
                 android:singleLine="true"
                 android:inputType="phone"
                 android:maxLength="10"
-                android:background="@drawable/shape_rect07"/>
-
-            <LinearLayout
-                android:id="@+id/addressLl"
-                android:layout_below="@id/phoneEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_rect02"/>
 
 
-                <EditText
-                    android:id="@+id/stateEt"
-                    android:hint="State"
-                    android:padding="13dp"
-                    android:drawableStart="@drawable/ic_location_gray"
-                    android:drawablePadding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorBlack"
-                    android:layout_margin="15dp"
-                    android:inputType="textPostalAddress"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_rect07"/>
-
-
-
-                <EditText
-                    android:id="@+id/cityEt"
-                    android:hint="City"
-                    android:padding="13dp"
-                    android:drawableStart="@drawable/ic_location_gray"
-                    android:drawablePadding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:textColorHint="@color/colorBlack"
-                    android:inputType="textPostalAddress"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_rect07"/>
-
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/addressEt"
@@ -120,37 +56,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"/>
 
             <EditText
                 android:id="@+id/classEt"
                 android:layout_below="@+id/addressLl"
                 android:hint="Enter Your Class"
                 android:padding="13dp"
-                android:drawableStart="@drawable/ic_location_gray"
+                android:drawableStart="@drawable/ic_class_gray"
                 android:drawablePadding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"/>
 
             <EditText
                 android:id="@+id/subjectEt"
                 android:layout_below="@+id/addressLl"
                 android:hint="Enter Your Subject"
                 android:padding="13dp"
-                android:drawableStart="@drawable/ic_location_gray"
+                android:drawableStart="@drawable/ic_subject_gray"
                 android:drawablePadding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"/>
 
             <EditText
                 android:id="@+id/commentEt"
@@ -162,9 +95,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
-                android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"/>
 
 
             <Button

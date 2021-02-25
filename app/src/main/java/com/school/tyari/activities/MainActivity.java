@@ -284,9 +284,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-     //   if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-   //         drawerLayout.closeDrawer(GravityCompat.START);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
 
+
+        /*
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
             builder.setMessage("Are you sure you want to Exit?")
@@ -309,14 +311,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
 
+         */
+
         }
- //       else
+        else
 
 
 
 
-        //    super.onBackPressed();
-  //  }
+            super.onBackPressed();
+    }
 
 
 

@@ -47,7 +47,6 @@ public class FacultyFragment extends Fragment {
         chemistryDepartment = view.findViewById(R.id.chemistryDepartment);
         biologyDepartment = view.findViewById(R.id.biologyDepartment);
         computerDepartment = view.findViewById(R.id.computerDepartment);
-        physicalDepartment = view.findViewById(R.id.physicalDepartment);
         hindiDepartment = view.findViewById(R.id.hindiDepartment);
 
 
@@ -57,7 +56,6 @@ public class FacultyFragment extends Fragment {
         chemistryNoData = view.findViewById(R.id.chemistryNoData);
         bioNoData = view.findViewById(R.id.biologyNoData);
         computrNoData = view.findViewById(R.id.computerNoData);
-        physicalNoData = view.findViewById(R.id.physicalNoData);
         hindiNoData = view.findViewById(R.id.hindiNoData);
 
        reference = FirebaseDatabase.getInstance().getReference().child("teacher");
@@ -68,7 +66,6 @@ public class FacultyFragment extends Fragment {
         chemistryDepartment();
         biologyDepartment();
         computerDepartment();
-        physicalDepartment();
         hindiDepartment();
 
 
@@ -267,38 +264,6 @@ public class FacultyFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
 
-            }
-        });
-    }
-
-    private void physicalDepartment() {
-
-
-        dbRef = reference.child("Physical");
-        dbRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list4 = new ArrayList<>();
-                if (!dataSnapshot.exists()){
-                    physicalNoData.setVisibility(View.VISIBLE);
-                    physicalDepartment.setVisibility(View.GONE);
-                }else {
-                    physicalNoData.setVisibility(View.GONE);
-                    physicalDepartment.setVisibility(View.VISIBLE);
-                    for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                        TeacherData data = snapshot.getValue(TeacherData.class);
-                        list4.add(data);
-                    }
-                    physicalDepartment.setHasFixedSize(true);
-                    physicalDepartment.setLayoutManager(new LinearLayoutManager(getContext()));
-                    adapter = new TeacherAdapter(list4, getContext());
-                    physicalDepartment.setAdapter(adapter);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -46,7 +46,11 @@ public class SplashActivityQuiz extends AppCompatActivity {
 
         new Thread() {
             public void run() {
-                // sleep(3000);
+                try {
+                    sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 loadData();
             }
         }.start();

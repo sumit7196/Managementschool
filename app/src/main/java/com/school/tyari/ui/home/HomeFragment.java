@@ -26,6 +26,7 @@ import com.school.tyari.activities.MainUserActivity;
 import com.school.tyari.others.AdmissionActivity;
 import com.school.tyari.others.BlogActivity;
 import com.school.tyari.others.ConveyanceActivity;
+import com.school.tyari.others.HomeworkActivity;
 import com.school.tyari.others.TutorActivity;
 import com.school.tyari.quiz.SplashActivityQuiz;
 import com.smarteist.autoimageslider.DefaultSliderView;
@@ -38,7 +39,7 @@ public class HomeFragment extends Fragment {
     private SliderLayout sliderLayout;
 
 
-    private LinearLayout BookCv,tutorCv,conveyanceCv,quizCv;
+    private LinearLayout BookCv,tutorCv,conveyanceCv,quizCv,homwrkCv;
 
 
     @Override
@@ -53,17 +54,18 @@ public class HomeFragment extends Fragment {
         conveyanceCv = view.findViewById(R.id.conveyanceCv);
         tutorCv = view.findViewById(R.id.tutorCv);
         quizCv = view.findViewById(R.id.quizCv);
+        homwrkCv = view.findViewById(R.id.homwrkCv);
 
 
 
 
-        sliderLayout = view.findViewById(R.id.slider);
-        sliderLayout.setIndicatorAnimation(IndicatorAnimations.FILL);
-        sliderLayout.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
-        sliderLayout.setScrollTimeInSec(1);
+  //      sliderLayout = view.findViewById(R.id.slider);
+  //      sliderLayout.setIndicatorAnimation(IndicatorAnimations.FILL);
+ //       sliderLayout.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+ //       sliderLayout.setScrollTimeInSec(1);
 
 
-        setSliderViews();
+ //       setSliderViews();
 
 
         BookCv.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +116,13 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        homwrkCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), HomeworkActivity.class );
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -130,19 +139,19 @@ public class HomeFragment extends Fragment {
             DefaultSliderView sliderView = new DefaultSliderView(getContext());
             switch (i){
                 case 0:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/s1.jpg?alt=media&token=bbb9c7f3-6e35-4505-b743-61bc966030ed");
+                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/slide1.jpg?alt=media&token=3976910b-a1fb-4bd1-8007-83a45a83a594");
                     break;
                 case 1:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/s2.jpeg?alt=media&token=ec73f3f4-7ed0-4d68-8254-a25a3fca5f68");
+                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/slide2.jpg?alt=media&token=31593853-56e6-4e3f-a727-f7ce7b43382f");
                     break;
                 case 2:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/s3.jpg?alt=media&token=9768450d-4434-4ad5-a585-73fc073066cc");
+                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/slide3.jpg?alt=media&token=b1a5a638-deb3-405b-8039-bb0548f9fb3b");
                     break;
                 case 3:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/s4.jpg?alt=media&token=b1ab4fca-ce03-4e93-ad0c-64fe494ae537");
+                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/slide4.jpg?alt=media&token=118aa2fb-7b5d-4288-92fe-16a3720d1de0");
                     break;
                 case 4:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/gp-adampur.appspot.com/o/slider%2F005.JPG?alt=media&token=bf0b5676-3c75-4616-a690-242093cccce0");
+                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/schooltyari-2057a.appspot.com/o/slide5.jpg?alt=media&token=8b0c125e-2b8b-4f93-b657-777c4999b869");
                     break;
             }
             sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
