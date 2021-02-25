@@ -32,7 +32,6 @@ public class TutorActivity extends AppCompatActivity {
 
     private EditText phoneEt,stateEt,cityEt,commentEt,addressEt,classEt,subjectEt;
     private Button btn_conf_order;
-    private ImageView backBtn;
 
 
     FirebaseDatabase database;
@@ -54,7 +53,6 @@ public class TutorActivity extends AppCompatActivity {
         classEt = findViewById(R.id.classEt);
         subjectEt = findViewById(R.id.subjectEt);
         btn_conf_order = findViewById(R.id.btn_conf_order);
-        backBtn = findViewById(R.id.backBtn);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -67,16 +65,7 @@ public class TutorActivity extends AppCompatActivity {
 
 
 
-        //go back to previous activity
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-                finish();
-                Intent i=new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-            }
-        });
+
 
         // animation_view.setOnClickListener(new View.OnClickListener() {
         //       @Override

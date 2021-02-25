@@ -232,7 +232,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void makeMeOffline() {
-
         //after logging in , make user online
         progressDialog.setMessage("Logging Out...");
 
@@ -259,18 +258,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 });
 
-    }
 
+    }
     private void checkUser() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user == null){
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
             finish();
         }
         else {
-
         }
     }
+
 
     private void rateMe() {
         try {

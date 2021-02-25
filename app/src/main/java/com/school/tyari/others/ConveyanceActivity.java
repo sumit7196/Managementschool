@@ -32,7 +32,7 @@ public class ConveyanceActivity extends AppCompatActivity {
 
     private EditText phoneEt,stateEt,cityEt,commentEt,addressEt,startArrivalEt,endDestinationEt;
     private Button btn_conf_order;
-    private ImageView backBtn;
+
 
 
     FirebaseDatabase database;
@@ -54,7 +54,6 @@ public class ConveyanceActivity extends AppCompatActivity {
         startArrivalEt = findViewById(R.id.startArrivalEt);
         endDestinationEt = findViewById(R.id.endDestinationEt);
         btn_conf_order = findViewById(R.id.btn_conf_order);
-        backBtn = findViewById(R.id.backBtn);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -67,16 +66,7 @@ public class ConveyanceActivity extends AppCompatActivity {
 
 
 
-        //go back to previous activity
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-                finish();
-                Intent i=new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-            }
-        });
+
 
         // animation_view.setOnClickListener(new View.OnClickListener() {
         //       @Override
