@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.school.tyari.R;
+import com.school.tyari.activities.MainActivity;
 
 public class MainQuizActivity extends AppCompatActivity {
     private TextView title;
@@ -35,5 +36,13 @@ public class MainQuizActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
     }
 }

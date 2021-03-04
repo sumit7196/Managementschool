@@ -139,7 +139,7 @@ public class MainUserActivity extends AppCompatActivity {
                             }else if (account.equals("schoolsvm")) {
                                 progressDialog.dismiss();
                                 //user Other
-                                loadMyInfosecond();
+
 
                             }
 
@@ -193,43 +193,6 @@ public class MainUserActivity extends AppCompatActivity {
                 });
     }
 
-    private void loadMyInfosecond() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
-        ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            String name = "" + ds.child("name").getValue();
-                            String email = "" + ds.child("email").getValue();
-                            String phone = "" + ds.child("phone").getValue();
-                            String profileImage = "" + ds.child("profileImage").getValue();
-                            String accountType = "" + ds.child("accountType").getValue();
-                            String city = "" + ds.child("city").getValue();
-
-                            //set user data
-
-                            nameTv.setText(name);
-//                            emailTv.setText(email);
-//                            phoneTv.setText(phone);
-
-                            //load only those shops that are in the city of user
-
-
-                           // checkingUsershop();
-                           // checkinguserorder();
-                              loadShopssecond();
-                              loadOrderssecond();
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
 
    // Load User Order
 
@@ -280,52 +243,7 @@ public class MainUserActivity extends AppCompatActivity {
         });
     }
 
-    private void loadOrderssecond() {
-        //init views
-        ordersList = new ArrayList<>();
 
-        //get orders
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ordersList.clear();
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    String uid = "" + ds.getRef().getKey();
-
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond").child(uid).child("Orders");
-                    ref.orderByChild("orderBy").equalTo(firebaseAuth.getUid())
-                            .addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if (snapshot.exists()) {
-                                        for (DataSnapshot ds : snapshot.getChildren()) {
-                                            ModelOrderUser modelOrderUser = ds.getValue(ModelOrderUser.class);
-
-                                            //add to list
-                                            ordersList.add(modelOrderUser);
-                                        }
-                                        //setup adapter
-                                        adapterOrderUser = new AdapterOrderUser(MainUserActivity.this, ordersList);
-                                        //set to recyclerview
-                                        ordersRv.setAdapter(adapterOrderUser);
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 
    //load user Shop
 
@@ -368,44 +286,7 @@ public class MainUserActivity extends AppCompatActivity {
 
     }
 
-    private void loadShopssecond() {
-        //init  list
-        shopsList = new ArrayList<>();
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
-        ref.orderByChild("accountType").equalTo("seller")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //clear list before adding
-                        shopsList.clear();
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            ModelShop modelShop = ds.getValue(ModelShop.class);
-
-                            String shopCity = "" + ds.child("city").getValue();
-
-                            //show only user city shops
-                            //  if (shopCity.equals(myCity)){
-                            shopsList.add(modelShop);
-                            //   }
-                            //if you want to display all shops,skip the if statement and add this
-                            //shopsList.add(modelShop);
-                        }
-                        //setup adapter
-                        adapterShop = new AdapterShop(MainUserActivity.this, shopsList);
-                        //set adapter to recyclerview
-                        shopsRv.setAdapter(adapterShop);
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-
-    }
 
     @Override
     public void onBackPressed() {

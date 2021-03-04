@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.school.tyari.quiz.MainQuizActivity;
 import com.squareup.picasso.Picasso;
 import com.school.tyari.Constants;
 import com.school.tyari.R;
@@ -514,6 +515,9 @@ public class ShopDetailsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        finish();
+        Intent i = new Intent(getApplicationContext(), MainUserActivity.class);
+        startActivity(i);
     }
 
 
