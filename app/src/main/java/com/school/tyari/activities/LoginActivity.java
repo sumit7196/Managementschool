@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onSuccess(AuthResult authResult) {
                         //logged in succesfully
                         loginfirebasefirst();
-                   //   checkingUser();
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -125,46 +125,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    private void checkingUser() {
 
-        //if user is seller ,start seller main screen
-        //if user is buyer,start user main screen
-
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-
-        ref
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            String account = "" + ds.child("account").getValue();
-                            if (account.equals("schoolcshp")) {
-                                progressDialog.dismiss();
-                                //user Other
-                                loginfirebasefirst();
-
-                            }else if (account.equals("schoolsvm")) {
-                                progressDialog.dismiss();
-                                //user Other
-                    //           loginfirebasesecond();
-
-                            }
-
-
-                        }
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                        Toast.makeText(LoginActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-
-    }
 
     private void loginfirebasefirst() {
         //if user is seller ,start seller main screen

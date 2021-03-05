@@ -242,7 +242,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         //if user is buyer,start user main screen
 
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
 
         if (code.equals("123456")){
 
@@ -251,8 +251,8 @@ public class RegisterUserActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot ds : snapshot.getChildren()) {
-                                String account = ""+ds.child("account").getValue();
-                                if (account.equals("schoolcshp")) {
+                                String account = ""+ds.child("accountType").getValue();
+                                if (account.equals("User")) {
                                     progressDialog.dismiss();
                                     //user is seller
                                     saverFirebaseData();
@@ -278,37 +278,6 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         }
 
-
-        else if (code.equals("svm")){
-            ref
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                String account = ""+ds.child("account").getValue();
-                                if (account.equals("schoolsvm")) {
-                                    progressDialog.dismiss();
-                                    //user is seller
-                                  //  saveSecondschooldata();
-                                }
-
-
-
-                            }
-                        }
-
-
-
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                            Toast.makeText(RegisterUserActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-
-        }
         else {
             progressDialog.dismiss();
             Toast.makeText(this, "Wrong Code", Toast.LENGTH_SHORT).show();
@@ -334,7 +303,7 @@ public class RegisterUserActivity extends AppCompatActivity {
             hashMap.put("timestamp",""+timestamp);
             hashMap.put("accountType","User");
          //   hashMap.put("online","true");
-            hashMap.put("code",""+code);
+          //  hashMap.put("code",""+code);
             hashMap.put("profileImage","");
 
             //save to db
@@ -386,7 +355,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                                 hashMap.put("phone",""+phoneNumber);
                                 hashMap.put("address",""+address);
                                 hashMap.put("timestamp",""+timestamp);
-                                hashMap.put("code",""+code);
+                         //       hashMap.put("code",""+code);
                                 hashMap.put("accountType","User");
                      //           hashMap.put("online","true");
                                 hashMap.put("profileImage",""+downloadImageUri); //url of uploaded image
@@ -426,115 +395,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
     }
 
-    private void saveSecondschooldata() {
-        progressDialog.setMessage("");
 
-        final String timestamp = ""+System.currentTimeMillis();
-
-        if (image_uri==null){
-            //save info without image
-
-            //setup data to save
-            HashMap<String,Object> hashMap = new HashMap<>();
-            hashMap.put("uid",""+firebaseAuth.getUid());
-            hashMap.put("email",""+email);
-            hashMap.put("name",""+fullName);
-            hashMap.put("phone",""+phoneNumber);
-            hashMap.put("address",""+address);
-            hashMap.put("timestamp",""+timestamp);
-            hashMap.put("accountType","User");
-        //    hashMap.put("online","true");
-            hashMap.put("code",""+code);
-            hashMap.put("profileImage","");
-
-            //save to db
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
-            ref.child(firebaseAuth.getUid()).setValue(hashMap)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            //db updated
-                            progressDialog.dismiss();
-                            startActivity(new Intent(RegisterUserActivity.this,MainActivity.class));
-                            finish();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            //failed updating db
-                            progressDialog.dismiss();
-                            startActivity(new Intent(RegisterUserActivity.this,MainActivity.class));
-                            finish();
-                        }
-                    });
-        }
-        else {
-            //save info with image
-
-            //name and path of image
-            String filePathAndName = "profile_images/" + ""+firebaseAuth.getUid();
-            //upload image
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
-            storageReference.putFile(image_uri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            //get url of uploaded images
-                            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                            while (!uriTask.isSuccessful());
-                            Uri downloadImageUri = uriTask.getResult();
-
-                            if (uriTask.isSuccessful()){
-
-
-                                //setup data to save
-                                HashMap<String,Object> hashMap = new HashMap<>();
-                                hashMap.put("uid",""+firebaseAuth.getUid());
-                                hashMap.put("email",""+email);
-                                hashMap.put("name",""+fullName);
-                                hashMap.put("phone",""+phoneNumber);
-                                hashMap.put("address",""+address);
-                                hashMap.put("timestamp",""+timestamp);
-                                hashMap.put("code",""+code);
-                                hashMap.put("accountType","User");
-                     //           hashMap.put("online","true");
-                                hashMap.put("profileImage",""+downloadImageUri); //url of uploaded image
-
-                                //save to db
-                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
-                                ref.child(firebaseAuth.getUid()).setValue(hashMap)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                //db updated
-                                                progressDialog.dismiss();
-                                                startActivity(new Intent(RegisterUserActivity.this,MainActivity.class));
-                                                finish();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                //failed updating db
-                                                progressDialog.dismiss();
-                                                startActivity(new Intent(RegisterUserActivity.this,MainActivity.class));
-                                                finish();
-                                            }
-                                        });
-
-                            }
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegisterUserActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
-    }
 
 
 
