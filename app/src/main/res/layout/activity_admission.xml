@@ -59,66 +59,95 @@
                 android:layout_marginTop="10dp"
                 />
 
-            <soup.neumorphism.NeumorphCardView
+
+            <EditText
+                android:id="@+id/nameEt"
+                android:hint="Name"
+                android:padding="13dp"
+                android:drawableStart="@drawable/ic_person_gray"
+                android:drawablePadding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/ShapeAppearance.Neumorph.CardView"
-                >
+                android:layout_margin="15dp"
+                android:singleLine="true"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:background="@drawable/shape_rect02"/>
+
+            <EditText
+                android:id="@+id/fathernameEt"
+                android:hint="Father's Name"
+                android:padding="13dp"
+                android:drawableStart="@drawable/ic_person_gray"
+                android:drawablePadding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:singleLine="true"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:background="@drawable/shape_rect02"/>
+
+            <EditText
+                android:id="@+id/mothernameEt"
+                android:hint="Mother's Name"
+                android:padding="13dp"
+                android:drawableStart="@drawable/ic_person_gray"
+                android:drawablePadding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:singleLine="true"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:background="@drawable/shape_rect02"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/nameEt"
+                    android:id="@+id/dobEt"
+                    android:hint="Date of Birth"
+                    android:padding="13dp"
+                    android:drawableStart="@drawable/ic_phone_gray"
+                    android:drawablePadding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:background="@drawable/shape_rect02"/>
+
+                <TextView
+                    android:id="@+id/categoryTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Full Name"
-                    android:drawableStart="@drawable/ic_person_gray"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:textCursorDrawable="@drawable/cursor"
-                    android:background="@android:color/transparent"
-                    android:inputType="textPersonName|textCapWords"
+                    android:hint="Gender"
+                    android:drawableEnd="@drawable/ic_down_gray"
+                    android:background="@drawable/shape_rect02"
+                    android:drawableStart="@drawable/ic_categories_gray"
+                    android:padding="13dp"
                     />
 
-            </soup.neumorphism.NeumorphCardView>
+
+            </LinearLayout>
+
 
             <EditText
                 android:id="@+id/phoneEt"
-                android:layout_below="@+id/nameEt"
                 android:hint="Phone Number"
                 android:padding="13dp"
                 android:drawableStart="@drawable/ic_phone_gray"
                 android:drawablePadding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorBlack"
                 android:layout_margin="15dp"
                 android:singleLine="true"
                 android:inputType="phone"
                 android:maxLength="10"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"/>
 
-            <LinearLayout
-                android:id="@+id/addressLl"
-                android:layout_below="@id/phoneEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <EditText
-                    android:id="@+id/cityEt"
-                    android:hint="Enter City Name"
-                    android:padding="13dp"
-                    android:drawableStart="@drawable/ic_location_gray"
-                    android:drawablePadding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:textColorHint="@color/colorBlack"
-                    android:inputType="textPostalAddress"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_rect07"/>
-
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/addressEt"
@@ -130,23 +159,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"/>
 
-            <EditText
-                android:id="@+id/schoolNameEt"
-                android:layout_below="@+id/addressLl"
-                android:hint="Enter School Name"
-                android:padding="13dp"
-                android:drawableStart="@drawable/ic_location_gray"
-                android:drawablePadding="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:textColorHint="@color/colorBlack"
-                android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
 
             <EditText
                 android:id="@+id/classEt"
@@ -158,9 +173,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"/>
 
             <EditText
                 android:id="@+id/commentEt"
@@ -172,9 +186,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
-                android:textColorHint="@color/colorBlack"
                 android:inputType="textPostalAddress|textMultiLine"
-                android:background="@drawable/shape_rect07"/>
+                android:background="@drawable/shape_rect02"/>
 
 
             <Button
@@ -190,7 +203,6 @@
                 android:gravity="center"
                 android:text="SUBMIT"
                 android:textAlignment="center"
-                android:textColor="@color/colorBlack"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 

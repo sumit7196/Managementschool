@@ -71,8 +71,8 @@ public class AdapterProductUser extends RecyclerView.Adapter<AdapterProductUser.
         holder.titleTv.setText(productTitle);
         holder.discountedNoteTv.setText(discountNote);
         holder.descriptionTv.setText(productDescription);
-        holder.originalPriceTv.setText("$"+originalPrice);
-        holder.discountedPriceTv.setText("$"+discountPrice);
+        holder.originalPriceTv.setText("Rs."+originalPrice);
+        holder.discountedPriceTv.setText("Rs."+discountPrice);
 
         if (discountAvailable.equals("true")){
             //product is on discount

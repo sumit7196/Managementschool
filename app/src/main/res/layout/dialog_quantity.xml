@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/productIv"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:text="Product Title"
             android:textColor="@color/colorWhite"/>
 

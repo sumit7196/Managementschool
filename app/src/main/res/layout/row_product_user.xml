@@ -84,7 +84,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
-                    android:text="$10"
+                    android:text="Rs10"
+                    android:layout_marginRight="5dp"
                     android:textColor="@color/colorGray02"/>
 
                 <TextView
@@ -92,7 +93,8 @@
                     android:id="@+id/originalPriceTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$20"
+                    android:text="Rs20"
+                    android:layout_marginRight="10dp"
                     android:textColor="@color/colorGray02"/>
 
 
@@ -101,16 +103,6 @@
 
         </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/nextIv"
-            android:layout_alignParentEnd="true"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:src="@drawable/ic_next_gray"/>
 
 
     </RelativeLayout>

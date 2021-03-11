@@ -35,7 +35,7 @@
         <activity android:name=".others.TutorActivity" />
         <activity android:name=".NotificationShowActivity" />
         <activity android:name=".others.AdmissionActivity" />
-        <activity android:name=".others.ConveyanceActivity" />
+        <activity android:name=".others.ConveyanceActivity"/>
         <activity android:name=".others.SchoolDetailsActivity" />
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.OrderDetailsSellerActivity" />

@@ -165,12 +165,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, TermsActivity.class));
                 finish();
                 break;
-            case R.id.nav_logout:
+    //        case R.id.nav_logout:
               //  checkingUser();
 
-                makeMeOffline();
+      //          makeMeOffline();
             //    logoutfirebasefirst();
-                break;
+        //        break;
 
 
 
@@ -182,6 +182,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void checkforupdate() {
+
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.school.tyari")));
+        }
+        catch (ActivityNotFoundException e){
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
+        }
     }
 
 
@@ -286,6 +294,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
 
+            finishAffinity();
 
         /*
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -317,6 +326,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+            finishAffinity();
 
             super.onBackPressed();
     }

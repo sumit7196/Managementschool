@@ -68,10 +68,10 @@ public class AdapterHomework extends RecyclerView.Adapter<AdapterHomework.Holder
 
 
         try {
-            Picasso.get().load(productIcon).placeholder(R.drawable.ic_shop_primary).into(holder.productIconIv);
+            Picasso.get().load(productIcon).placeholder(R.drawable.addimage).into(holder.productIconIv);
         }
         catch (Exception e){
-            holder.productIconIv.setImageResource(R.drawable.ic_shop_primary);
+            holder.productIconIv.setImageResource(R.drawable.addimage);
         }
 
         /*

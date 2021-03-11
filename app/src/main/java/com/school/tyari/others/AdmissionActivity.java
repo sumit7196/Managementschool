@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+import android.Manifest;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -32,6 +35,8 @@ public class AdmissionActivity extends AppCompatActivity {
 
     private EditText nameEt,phoneEt,stateEt,cityEt,commentEt,addressEt,classEt,schoolNameEt;
     private Button btn_conf_order;
+    private ImageView profileIv;
+
 
 
     FirebaseDatabase database;
@@ -39,6 +44,26 @@ public class AdmissionActivity extends AppCompatActivity {
     int maxid = 0;
     ModelAdmission modelAdmission;
     private FirebaseAuth firebaseAuth;
+
+    //permission constants
+    //  private static  final int LOCATION_REQUEST_CODE = 100;
+    private static  final int CAMERA_REQUEST_CODE = 200;
+    private static  final int STORAGE_REQUEST_CODE = 300;
+    //image pick constants
+    private static  final int IMAGE_PICK_GALLERY_CODE = 400;
+    private static  final int IMAGE_PICK_CAMERA_CODE = 500;
+
+
+    //permission arrays
+    //   private String[] locationPermissions;
+    private String[] cameraPermissions;
+    private String[] storagePermissions;
+
+    //
+    private Uri image_uri;
+
+    private ProgressDialog progressDialog;
+
 
 
     @Override
@@ -53,8 +78,17 @@ public class AdmissionActivity extends AppCompatActivity {
         commentEt = findViewById(R.id.commentEt);
         addressEt=findViewById(R.id.addressEt);
         classEt = findViewById(R.id.classEt);
-        schoolNameEt = findViewById(R.id.schoolNameEt);
         btn_conf_order = findViewById(R.id.btn_conf_order);
+
+
+        //init permission array
+        cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setCanceledOnTouchOutside(false);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -62,7 +96,8 @@ public class AdmissionActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         modelAdmission = new ModelAdmission();
-        ref = FirebaseDatabase.getInstance().getReference("Users").child(firebaseAuth.getUid()).child("AdmissionForm");
+        ref = FirebaseDatabase.getInstance().getReference().child("AdmissionForm");
+
 
 
 

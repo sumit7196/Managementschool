@@ -276,46 +276,13 @@ public class ProfileEditUserActivity extends AppCompatActivity implements Locati
         }
         else {
 
-            checkingprofiledetails();
+           loadMyInfo();
 
 
         }
     }
 
-    private void checkingprofiledetails() {
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-
-        ref
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            String account = "" + ds.child("account").getValue();
-                            if (account.equals("schoolcshp")) {
-                                progressDialog.dismiss();
-                                //user Other
-                                loadMyInfo();
-
-                            }else if (account.equals("schoolsvm")) {
-                                progressDialog.dismiss();
-                                //user Other
-                                loadMyInfosecond();
-                            }
-
-
-                        }
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                        Toast.makeText(ProfileEditUserActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-    }
 
     private void loadMyInfo() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolFirst");
@@ -362,50 +329,6 @@ public class ProfileEditUserActivity extends AppCompatActivity implements Locati
                 });
     }
 
-    private void loadMyInfosecond() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("SchoolSecond");
-        ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds: snapshot.getChildren()){
-                            String accountType = ""+ds.child("accountType").getValue();
-                            String name = ""+ds.child("name").getValue();
-                            String address = ""+ds.child("address").getValue();
-                        //    String city = ""+ds.child("city").getValue();
-                        //    String state = ""+ds.child("state").getValue();
-                       //     String country = ""+ds.child("country").getValue();
-                            String email = ""+ds.child("email").getValue();
-                            String online = ""+ds.child("online").getValue();
-                            String phone = ""+ds.child("phone").getValue();
-                            String profileImage = ""+ds.child("profileImage").getValue();
-                            String timestamp = ""+ds.child("timestamp").getValue();
-                            String uid = ""+ds.child("uid").getValue();
-
-
-                            nameEt.setText(name);
-                            phoneEt.setText(phone);
-                            countryEt.setText(country);
-                            stateEt.setText(state);
-                            cityEt.setText(city);
-                            addressEt.setText(address);
-
-                            try {
-                                Picasso.get().load(profileImage).placeholder(R.drawable.ic_store_gray).into(profileIv);
-                            }
-                            catch (Exception e){
-                                profileIv.setImageResource(R.drawable.ic_person_gray);
-                            }
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
 
     private void showImagePickDialog() {
         //option to display in dialog

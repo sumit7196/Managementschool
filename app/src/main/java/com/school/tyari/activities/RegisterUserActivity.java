@@ -258,11 +258,6 @@ public class RegisterUserActivity extends AppCompatActivity {
                                     saverFirebaseData();
                                 }
 
-                                else {
-                                    progressDialog.dismiss();
-                                    //user is buyer
-                                    Toast.makeText(RegisterUserActivity.this, "No path", Toast.LENGTH_SHORT).show();
-                                }
                             }
                         }
 

@@ -516,7 +516,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        Intent i = new Intent(getApplicationContext(), MainUserActivity.class);
+        Intent i = new Intent(ShopDetailsActivity.this, MainUserActivity.class);
         startActivity(i);
     }
 
